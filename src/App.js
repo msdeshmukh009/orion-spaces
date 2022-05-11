@@ -1,5 +1,11 @@
-import { Login, SignUp } from "./pages/authentication";
+import { NavigationRoutes } from "./routes";
+import { useTheme } from "./hooks";
 
 export default function App() {
-  return <Login />;
+  const { currentTheme } = useTheme();
+  return (
+    <div className={`${currentTheme === "dark" ? "dark" : ""}`}>
+      <NavigationRoutes />
+    </div>
+  );
 }

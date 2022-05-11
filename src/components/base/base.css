@@ -1,0 +1,30 @@
+.main-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.main-container {
+  grid-area: main-container;
+}
+.aside {
+  grid-area: aside;
+}
+@media screen and (min-width: 640px) {
+  .main-grid-layout {
+    grid-template-columns: 80px auto;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .main-grid-layout {
+    grid-template-columns: 80px auto 300px;
+    grid-template-areas: "... main-container aside";
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .main-grid-layout {
+    grid-template-columns: 250px auto 300px;
+    grid-template-areas: "... main-container aside";
+  }
+}

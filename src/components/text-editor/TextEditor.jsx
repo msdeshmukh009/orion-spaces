@@ -1,6 +1,6 @@
 const TextEditor = () => {
   return (
-    <div className="flex gap-2 py-2 border-b-2 border-secondary-color-50">
+    <div className="hidden sm:flex gap-2 py-2 border-t-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
       <div className="basis-14 shrink-0">
         <a href="/">
           <img
@@ -13,7 +13,7 @@ const TextEditor = () => {
       <div className="w-full">
         <textarea
           rows="3"
-          className="w-full focus:outline-none py-3 placeholder:text-xl placeholder:text"
+          className="w-full focus:outline-none py-3 placeholder:text-xl placeholder:text bg-background-color dark:bg-background-color-dm resize-none"
           placeholder="Whats Happening?"
         ></textarea>
         <div className="flex justify-end px-2">
