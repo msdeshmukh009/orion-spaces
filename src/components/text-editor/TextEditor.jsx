@@ -1,6 +1,6 @@
 const TextEditor = () => {
   return (
-    <div className="hidden sm:flex gap-2 py-2 border-t-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
+    <div className="hidden sm:flex gap-2 py-2">
       <div className="basis-14 shrink-0">
         <a href="/">
           <img
