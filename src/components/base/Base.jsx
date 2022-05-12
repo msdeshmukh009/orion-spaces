@@ -12,7 +12,7 @@ const Base = ({ children }) => {
       <Modal showModal={showPostModal}>
         <div className="bg-secondary-color-50 dark:bg-secondary-color-dm-100 w-4/5 xl:w-1/3  p-2 rounded-md">
           <div className="w-full flex justify-end">
-            <button className="p-2">
+            <button className="p-2" onClick={() => setShowPostModal(false)}>
               <MdOutlineClose className="close-btn" />
             </button>
           </div>
