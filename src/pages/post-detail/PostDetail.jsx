@@ -1,21 +1,11 @@
 import { Link } from "react-router-dom";
-import { MdOutlineArrowBack } from "react-icons/md";
-import { Base, SearchBar, Avatar, PostCtaBar, Comment } from "../../components";
+import { Base, Avatar, PostCtaBar, Comment, MainTopBar } from "../../components";
 
 const PostDetail = () => {
   return (
     <Base>
       <main>
-        <div className="hidden p-2 sm:flex gap-2 items-center sticky top-0 bg-background-color dark:bg-background-color-dm">
-          <Link to="/home" className="cursor-pointer">
-            <MdOutlineArrowBack />
-          </Link>
-          <h1 className="text-xl">Post</h1>
-        </div>
-
-        <div className="hidden sm:block lg:hidden">
-          <SearchBar />
-        </div>
+        <MainTopBar title={"Post"} />
 
         <Link to="/" className="flex gap-2 items-center p-2">
           <span className="basis-12">
