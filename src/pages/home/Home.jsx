@@ -1,18 +1,13 @@
 import { useState } from "react";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { MdTrendingUp, MdStarOutline } from "react-icons/md";
-import { TextEditor, UserPost, Base, SearchBar } from "../../components";
+import { TextEditor, UserPost, Base, SearchBar, MainTopBar } from "../../components";
 
 const Home = () => {
   const [showSortingOptions, setShowSortingOptions] = useState(false);
   return (
     <Base>
-      <div className="hidden p-2 sm:block sticky top-0 bg-background-color dark:bg-background-color-dm">
-        <h1 className="text-xl">Home</h1>
-      </div>
-      <div className="hidden sm:block lg:hidden">
-        <SearchBar />
-      </div>
+      <MainTopBar title={"Home"} />
 
       <TextEditor />
 
