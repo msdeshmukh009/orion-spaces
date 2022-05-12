@@ -9,6 +9,7 @@ import {
 } from "react-icons/md";
 import { BsMoon } from "react-icons/bs";
 import { useTheme } from "../../hooks";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const { currentTheme, toggleTheme } = useTheme();
@@ -62,13 +63,13 @@ const Sidebar = () => {
 
           <span className="hidden xl:block">Bookmark</span>
         </a>
-        <a href="/" className={NAV_LINK_STYLES}>
+        <Link to="/profile" className={NAV_LINK_STYLES}>
           <div className="xl:mr-2 text-xl">
             <MdOutlinePersonOutline />
           </div>
 
           <span className="hidden xl:block">Profile</span>
-        </a>
+        </Link>
       </nav>
 
       <div className="hidden xl:block">
