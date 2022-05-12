@@ -1,7 +1,6 @@
-import { IoMdHeartEmpty } from "react-icons/io";
-import { MdOutlineModeComment, MdOutlineBookmarkBorder, MdOutlineShare } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { Avatar } from "../avatar/Avatar";
+import { PostCtaBar } from "../post-cta-bar/PostCtaBar";
 
 const UserPost = () => {
   return (
@@ -24,32 +23,7 @@ const UserPost = () => {
             cumque, nemo aperiam ratione tempora sequi obcaecati maiores.
           </Link>
         </div>
-        <div className="flex justify-between gap-4 mr-2">
-          <button
-            className="flex gap-2 text-xl rounded-sm p-2 hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100"
-            title="Like"
-          >
-            <IoMdHeartEmpty /> <span className="text-sm">2</span>
-          </button>
-          <button
-            className="flex gap-2 text-xl rounded-sm p-2 hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100"
-            title="Reply"
-          >
-            <MdOutlineModeComment /> <span className="text-sm">2</span>
-          </button>
-          <button
-            className="text-xl rounded-sm p-2 hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100"
-            title="Bookmark"
-          >
-            <MdOutlineBookmarkBorder />
-          </button>
-          <button
-            className="text-xl rounded-sm p-2 hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100"
-            title="Share"
-          >
-            <MdOutlineShare />
-          </button>
-        </div>
+        <PostCtaBar />
       </div>
     </div>
   );
