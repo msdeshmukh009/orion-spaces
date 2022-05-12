@@ -21,6 +21,8 @@ module.exports = {
       "text-color": "hsl(207, 7%, 31%)",
       "text-color-dm": "#f7f9f9",
       "dark-color": "hsl(210, 25%, 8%)",
+      "red-color": "hsl(351, 83%, 55%)",
+      "green-color": "hsl(120, 55%, 49%)",
     },
   },
   plugins: [],
