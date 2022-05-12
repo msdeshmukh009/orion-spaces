@@ -1,9 +1,65 @@
-import { MdLogout } from "react-icons/md";
-import { Avatar, Base, MainTopBar, UserPost } from "../../components";
+import { useState } from "react";
+import { MdLogout, MdPhotoCamera } from "react-icons/md";
+import { Avatar, Base, MainTopBar, Modal, UserPost } from "../../components";
 
 const Profile = () => {
+  const [showUpdateProfileModal, setShowUpdateProfileModal] = useState(false);
   return (
     <Base>
+      <Modal showModal={showUpdateProfileModal}>
+        <div className="bg-secondary-color-100 dark:bg-secondary-color-dm-100 w-96 rounded-md p-4">
+          <h1 className="text-xl text-center">Update Profile</h1>
+          <div className=" mt-2 flex justify-center">
+            <div className="relative w-32">
+              <Avatar />
+              <button className="absolute bottom-1 right-4 font-bold text-lg bg-secondary-color-dm-50 rounded-[50%]">
+                <MdPhotoCamera />
+              </button>
+            </div>
+          </div>
+          <div className="flex flex-col gap-2 mt-2">
+            <div className="flex flex-col">
+              <span className="font-bold">Username</span>
+              <span>@theUserName</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="font-bold">Name</span>
+              <span>The cool user</span>
+            </div>
+
+            <label className="flex flex-col gap-1">
+              <span className="font-bold">Bio</span>
+              <input
+                className="w-full bg-opacity-20 focus:ring-2 rounded border border-secondary-color-200 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:text-text-color"
+                type="text"
+              />
+            </label>
+
+            <label className="flex flex-col gap-1">
+              <span className="font-bold">Website</span>
+              <input
+                className="w-full bg-opacity-20 focus:ring-2 rounded border border-secondary-color-200 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:text-text-color"
+                type="url"
+              />
+            </label>
+          </div>
+          <div className="mt-4 flex justify-end">
+            <button
+              onClick={() => setShowUpdateProfileModal(false)}
+              className="hover:bg-red-color border-2 mr-auto rounded-md p-2"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={() => setShowUpdateProfileModal(false)}
+              className="bg-green-color hover:opacity-70 rounded-md p-2"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </Modal>
+
       <main>
         <MainTopBar title={"The Cool User"} />
 
@@ -28,7 +84,10 @@ const Profile = () => {
             </a>
           </div>
 
-          <button className="border-2 px-4 py-1 rounded-[30rem] font-bold border-secondary-color-100 hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100">
+          <button
+            onClick={() => setShowUpdateProfileModal(true)}
+            className="border-2 px-4 py-1 rounded-[30rem] font-bold border-secondary-color-100 hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100"
+          >
             Edit Profile
           </button>
 
