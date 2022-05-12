@@ -9,3 +9,4 @@ export { MobileBottomBar } from "./mobile-bottom-bar/MobileBottomBar";
 export { Avatar } from "./avatar/Avatar";
 export { PostCtaBar } from "./post-cta-bar/PostCtaBar";
 export { Comment } from "./comment/Comment";
+export { MainTopBar } from "./main-top-bar/MainTopBar";
