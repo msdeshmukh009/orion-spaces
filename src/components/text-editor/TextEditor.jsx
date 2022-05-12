@@ -1,14 +1,10 @@
+import { Avatar } from "../avatar/Avatar";
+
 const TextEditor = () => {
   return (
     <div className="hidden sm:flex gap-2 py-2">
       <div className="basis-14 shrink-0">
-        <a href="/">
-          <img
-            className="rounded-[50%]"
-            src="https://avatars.dicebear.com/api/avataaars/your-custom-seed52.svg"
-            alt="user-name"
-          />
-        </a>
+        <Avatar />
       </div>
       <div className="w-full">
         <textarea

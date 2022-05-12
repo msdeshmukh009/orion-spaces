@@ -43,11 +43,7 @@ const PostDetail = () => {
 
         <div className="flex gap-2 justify-between items-center p-2 border-t-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
           <span className="basis-12">
-            <img
-              className="rounded-[50%]"
-              src="https://avatars.dicebear.com/api/avataaars/your-custom-seed52.svg"
-              alt="user-name"
-            />
+            <Avatar />
           </span>
 
           <span className="flex-1">
