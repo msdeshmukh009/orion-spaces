@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Login, SignUp, Home, PostDetail, Profile, Bookmark } from "../pages";
+import { Login, SignUp, Home, PostDetail, Profile, Bookmark, Explore } from "../pages";
 
 const NavigationRoutes = () => {
   return (
@@ -10,6 +10,7 @@ const NavigationRoutes = () => {
       <Route path="/post-detail" element={<PostDetail />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/bookmark" element={<Bookmark />} />
+      <Route path="/explore" element={<Explore />} />
     </Routes>
   );
 };

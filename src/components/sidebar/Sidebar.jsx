@@ -34,21 +34,21 @@ const Sidebar = () => {
       </header>
 
       <nav className="flex flex-col items-center xl:items-start gap-2">
-        <a href="/" className={NAV_LINK_STYLES}>
+        <Link to="/home" className={NAV_LINK_STYLES}>
           <div className="xl:mr-2 flex text-xl">
             <MdOutlineHome />
           </div>
 
           <span className="hidden xl:block">Home</span>
-        </a>
+        </Link>
 
-        <a href="/" className={NAV_LINK_STYLES}>
+        <Link to="/explore" className={NAV_LINK_STYLES}>
           <div className="xl:mr-2 text-xl">
             <MdOutlineExplore />
           </div>
 
           <span className="hidden xl:block">Explore</span>
-        </a>
+        </Link>
         <a href="/" className={NAV_LINK_STYLES}>
           <div className="xl:mr-2 text-xl">
             <MdNotificationsNone />
