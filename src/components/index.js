@@ -10,3 +10,4 @@ export { Avatar } from "./avatar/Avatar";
 export { PostCtaBar } from "./post-cta-bar/PostCtaBar";
 export { Comment } from "./comment/Comment";
 export { MainTopBar } from "./main-top-bar/MainTopBar";
+export { CommentNotification, LikeNotification } from "./notifications";

@@ -11,12 +11,12 @@ const UserPost = () => {
       <div className="flex flex-col gap-2">
         <div className="flex flex-col">
           <div className="flex gap-1">
-            <a href="/" className="font-semibold">
+            <Link to="/profile" className="font-semibold">
               The cool User
-            </a>
-            <a href="/" className="text-secondary-color-200">
+            </Link>
+            <Link to="/profile" className="text-secondary-color-200">
               @theUserName
-            </a>
+            </Link>
           </div>
           <Link to="/post-detail">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quos aliquam consequatur
