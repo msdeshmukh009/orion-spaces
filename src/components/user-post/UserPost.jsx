@@ -1,5 +1,6 @@
 import { IoMdHeartEmpty } from "react-icons/io";
 import { MdOutlineModeComment, MdOutlineBookmarkBorder, MdOutlineShare } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const UserPost = () => {
   return (
@@ -23,10 +24,10 @@ const UserPost = () => {
               @theUserName
             </a>
           </div>
-          <a href="/">
+          <Link to="/post-detail">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quos aliquam consequatur
             cumque, nemo aperiam ratione tempora sequi obcaecati maiores.
-          </a>
+          </Link>
         </div>
         <div className="flex justify-between gap-4 mr-2">
           <button
