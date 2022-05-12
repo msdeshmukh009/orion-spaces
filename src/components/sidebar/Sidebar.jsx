@@ -56,13 +56,13 @@ const Sidebar = () => {
 
           <span className="hidden xl:block">Notification</span>
         </a>
-        <a href="/" className={NAV_LINK_STYLES}>
+        <Link to="/bookmark" className={NAV_LINK_STYLES}>
           <div className="xl:mr-2 text-xl">
             <MdOutlineBookmarkBorder />
           </div>
 
           <span className="hidden xl:block">Bookmark</span>
-        </a>
+        </Link>
         <Link to="/profile" className={NAV_LINK_STYLES}>
           <div className="xl:mr-2 text-xl">
             <MdOutlinePersonOutline />
