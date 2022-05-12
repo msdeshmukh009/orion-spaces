@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Login, SignUp, Home, PostDetail } from "../pages";
+import { Login, SignUp, Home, PostDetail, Profile } from "../pages";
 
 const NavigationRoutes = () => {
   return (
@@ -8,6 +8,7 @@ const NavigationRoutes = () => {
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/home" element={<Home />} />
       <Route path="/post-detail" element={<PostDetail />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 };
