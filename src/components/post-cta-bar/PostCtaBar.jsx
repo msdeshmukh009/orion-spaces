@@ -1,7 +1,15 @@
-import { MdOutlineModeComment, MdOutlineBookmarkBorder, MdOutlineShare } from "react-icons/md";
+import { useLocation } from "react-router-dom";
+import {
+  MdOutlineModeComment,
+  MdOutlineBookmarkBorder,
+  MdOutlineShare,
+  MdOutlineBookmark,
+} from "react-icons/md";
 import { IoMdHeartEmpty } from "react-icons/io";
 
 const PostCtaBar = () => {
+  const { pathname } = useLocation();
+
   return (
     <div className="flex justify-between gap-4 w-full p-2">
       <button
@@ -20,7 +28,7 @@ const PostCtaBar = () => {
         className="text-xl rounded-sm p-2 hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100"
         title="Bookmark"
       >
-        <MdOutlineBookmarkBorder />
+        {pathname === "/bookmark" ? <MdOutlineBookmark /> : <MdOutlineBookmarkBorder />}
       </button>
       <button
         className="text-xl rounded-sm p-2 hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100"
