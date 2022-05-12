@@ -8,11 +8,12 @@ import {
   MdOutlineWbSunny,
 } from "react-icons/md";
 import { BsMoon } from "react-icons/bs";
-import { useTheme } from "../../hooks";
+import { usePostModal, useTheme } from "../../hooks";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const { currentTheme, toggleTheme } = useTheme();
+  const { setShowPostModal } = usePostModal();
   const NAV_LINK_STYLES =
     "flex items-center justify-center xl:justify-start px-2 py-2 text-xl mb-3 w-fit rounded-[30rem] hover:bg-secondary-color-100 hover:dark:bg-secondary-color-dm-100";
 
@@ -73,7 +74,10 @@ const Sidebar = () => {
       </nav>
 
       <div className="hidden xl:block">
-        <button className="bg-primary-color-100 hover:bg-primary-color-200 active:bg-primary-color-100 text-secondary-color-100 text-xl rounded-[30rem] p-2 w-3/4">
+        <button
+          onClick={() => setShowPostModal(true)}
+          className="bg-primary-color-100 hover:bg-primary-color-200 active:bg-primary-color-100 text-secondary-color-100 text-xl rounded-[30rem] p-2 w-3/4"
+        >
           Post
         </button>
       </div>

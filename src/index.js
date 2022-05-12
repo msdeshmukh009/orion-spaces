@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "./context";
+import { PostModalProvider, ThemeProvider } from "./context";
 
 // Call make Server
 makeServer();
@@ -13,7 +13,9 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider>
-        <App />
+        <PostModalProvider>
+          <App />
+        </PostModalProvider>
       </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,

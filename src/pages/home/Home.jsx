@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { MdTrendingUp, MdStarOutline } from "react-icons/md";
-import { TextEditor, UserPost, Base, SearchBar, MainTopBar } from "../../components";
+import { TextEditor, UserPost, Base, MainTopBar } from "../../components";
 
 const Home = () => {
   const [showSortingOptions, setShowSortingOptions] = useState(false);
@@ -9,7 +9,9 @@ const Home = () => {
     <Base>
       <MainTopBar title={"Home"} />
 
-      <TextEditor />
+      <div className="hidden sm:block">
+        <TextEditor />
+      </div>
 
       <div className="flex justify-between p-2 text-xl border-y-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
         <h3>Latest Posts</h3>

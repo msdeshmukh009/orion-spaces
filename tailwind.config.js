@@ -23,6 +23,8 @@ module.exports = {
       "dark-color": "hsl(210, 25%, 8%)",
       "red-color": "hsl(351, 83%, 55%)",
       "green-color": "hsl(120, 55%, 49%)",
+      "modal-bg-color-dm": "hsla(208, 18%, 44%, 0.4)",
+      "modal-bg-color": "rgba(0, 0, 0, 0.4)",
     },
   },
   plugins: [],

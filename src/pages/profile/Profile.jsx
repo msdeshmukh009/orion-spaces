@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import { MdOutlineArrowBack, MdLogout } from "react-icons/md";
-import { Avatar, Base, MainTopBar, SearchBar, UserPost } from "../../components";
+import { MdLogout } from "react-icons/md";
+import { Avatar, Base, MainTopBar, UserPost } from "../../components";
 
 const Profile = () => {
   return (

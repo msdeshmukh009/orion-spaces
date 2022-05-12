@@ -4,10 +4,17 @@ import { BsThreeDots } from "react-icons/bs";
 import { MdOutlineEdit, MdOutlineDeleteOutline } from "react-icons/md";
 import { Avatar } from "../avatar/Avatar";
 import { PostCtaBar } from "../post-cta-bar/PostCtaBar";
+import { usePostModal } from "../../hooks";
 
 const UserPost = () => {
   const [showPostOptions, setShowPostOptions] = useState(false);
+  const { setShowPostModal } = usePostModal();
   const { pathname } = useLocation();
+
+  const handleEdit = () => {
+    setShowPostModal(true);
+    setShowPostOptions(false);
+  };
 
   return (
     <div className="flex rounded-md border-b-2 border-secondary-color-50 py-2 hover:bg-secondary-color-50 dark:border-secondary-color-dm-50 dark:hover:bg-secondary-color-dm-50">
@@ -44,7 +51,10 @@ const UserPost = () => {
               showPostOptions ? "flex" : "hidden"
             } absolute justify-center flex-col gap-1 top-5 right-4 w-32 text-sm shadow-lg p-1 rounded-md bg-secondary-color-100 dark:bg-secondary-color-dm-100`}
           >
-            <div className="flex gap-1 items-center hover:bg-secondary-color-50 dark:hover:bg-secondary-color-dm-50 cursor-pointer p-1 rounded-md">
+            <div
+              onClick={handleEdit}
+              className="flex gap-1 items-center hover:bg-secondary-color-50 dark:hover:bg-secondary-color-dm-50 cursor-pointer p-1 rounded-md"
+            >
               <MdOutlineEdit /> <span className="flex-1">Edit Post</span>
             </div>
             <div className="flex gap-1 items-center hover:text-red-color hover:bg-secondary-color-50 dark:hover:bg-secondary-color-dm-50 cursor-pointer p-1 rounded-md">
