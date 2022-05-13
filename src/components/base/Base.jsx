@@ -26,7 +26,7 @@ const Base = ({ children }) => {
       <div className="p-2 min-h-full max-w-7xl w-full sm:w-4/5 m-auto main-grid-layout">
         <Sidebar />
 
-        <main className="main-container flex flex-col justify-between min-h-screen border-x-2 py-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
+        <main className="main-container mb-4 flex flex-col justify-between min-h-screen border-x-2 py-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
           {children}
         </main>
 
