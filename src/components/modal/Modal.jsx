@@ -1,5 +1,3 @@
-import { usePostModal } from "../../hooks";
-
 const Modal = ({ children, showModal }) => {
   return (
     <div
