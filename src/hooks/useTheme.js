@@ -7,7 +7,7 @@ const useTheme = () => {
   const toggleTheme = () => {
     if (currentTheme === "dark") {
       setCurrentTheme("");
-      localStorage.setItem("spaces-theme", "");
+      localStorage.setItem("spaces-theme", "light");
     } else {
       setCurrentTheme("dark");
       localStorage.setItem("spaces-theme", "dark");
