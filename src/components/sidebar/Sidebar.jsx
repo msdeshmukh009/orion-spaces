@@ -1,15 +1,20 @@
 import {
   MdOutlineHome,
+  MdHome,
   MdOutlineBookmarkBorder,
   MdOutlinePersonOutline,
   MdOutlineExplore,
   MdNotificationsNone,
+  MdNotifications,
+  MdOutlineBookmark,
   MdOutlineEdit,
   MdOutlineWbSunny,
+  MdExplore,
+  MdPerson,
 } from "react-icons/md";
 import { BsMoon } from "react-icons/bs";
+import { Link, NavLink } from "react-router-dom";
 import { usePostModal, useTheme } from "../../hooks";
-import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const { currentTheme, toggleTheme } = useTheme();
@@ -28,49 +33,117 @@ const Sidebar = () => {
       </div>
 
       <header>
-        <a href="/" className="text-primary-color-100 items-center flex w-full text-2xl relative">
+        <Link
+          to="/home"
+          className="text-primary-color-100 items-center flex w-full text-2xl relative"
+        >
           <img src="/assets/logo3.svg" alt="orion-spaces" />
           <span className="hidden w-full px-3 xl:block absolute -bottom-1.5">Orion Spaces</span>
-        </a>
+        </Link>
       </header>
 
       <nav className="flex flex-col items-center xl:items-start gap-2">
-        <Link to="/home" className={NAV_LINK_STYLES}>
-          <div className="xl:mr-2 flex text-xl">
-            <MdOutlineHome />
-          </div>
+        <NavLink to="/home" className={NAV_LINK_STYLES}>
+          {({ isActive }) =>
+            isActive ? (
+              <>
+                <div className="xl:mr-2 flex text-xl">
+                  <MdHome />
+                </div>
+                <span className="hidden xl:block font-bold">Home</span>
+              </>
+            ) : (
+              <>
+                <div className="xl:mr-2 flex text-xl">
+                  <MdOutlineHome />
+                </div>
+                <span className="hidden xl:block">Home</span>
+              </>
+            )
+          }
+        </NavLink>
 
-          <span className="hidden xl:block">Home</span>
-        </Link>
+        <NavLink to="/explore" className={NAV_LINK_STYLES}>
+          {({ isActive }) =>
+            isActive ? (
+              <>
+                <div className="xl:mr-2 text-xl">
+                  <MdExplore />
+                </div>
 
-        <Link to="/explore" className={NAV_LINK_STYLES}>
-          <div className="xl:mr-2 text-xl">
-            <MdOutlineExplore />
-          </div>
+                <span className="hidden xl:block font-bold">Explore</span>
+              </>
+            ) : (
+              <>
+                <div className="xl:mr-2 text-xl">
+                  <MdOutlineExplore />
+                </div>
 
-          <span className="hidden xl:block">Explore</span>
-        </Link>
-        <Link to="/notifications" className={NAV_LINK_STYLES}>
-          <div className="xl:mr-2 text-xl">
-            <MdNotificationsNone />
-          </div>
+                <span className="hidden xl:block">Explore</span>
+              </>
+            )
+          }
+        </NavLink>
 
-          <span className="hidden xl:block">Notification</span>
-        </Link>
-        <Link to="/bookmark" className={NAV_LINK_STYLES}>
-          <div className="xl:mr-2 text-xl">
-            <MdOutlineBookmarkBorder />
-          </div>
+        <NavLink to="/notifications" className={NAV_LINK_STYLES}>
+          {({ isActive }) =>
+            isActive ? (
+              <>
+                <div className="xl:mr-2 text-xl">
+                  <MdNotifications />
+                </div>
+                <span className="hidden xl:block font-bold">Notification</span>
+              </>
+            ) : (
+              <>
+                <div className="xl:mr-2 text-xl">
+                  <MdNotificationsNone />
+                </div>
+                <span className="hidden xl:block">Notification</span>
+              </>
+            )
+          }
+        </NavLink>
+        <NavLink to="/bookmark" className={NAV_LINK_STYLES}>
+          {({ isActive }) =>
+            isActive ? (
+              <>
+                <div className="xl:mr-2 text-xl">
+                  <MdOutlineBookmark />
+                </div>
+                <span className="hidden xl:block font-bold">Bookmark</span>
+              </>
+            ) : (
+              <>
+                <div className="xl:mr-2 text-xl">
+                  <MdOutlineBookmarkBorder />
+                </div>
+                <span className="hidden xl:block">Bookmark</span>
+              </>
+            )
+          }
+        </NavLink>
+        <NavLink to="/profile" className={NAV_LINK_STYLES}>
+          {({ isActive }) =>
+            isActive ? (
+              <>
+                <div className="xl:mr-2 text-xl">
+                  <MdPerson />
+                </div>
 
-          <span className="hidden xl:block">Bookmark</span>
-        </Link>
-        <Link to="/profile" className={NAV_LINK_STYLES}>
-          <div className="xl:mr-2 text-xl">
-            <MdOutlinePersonOutline />
-          </div>
+                <span className="hidden xl:block font-bold">Profile</span>
+              </>
+            ) : (
+              <>
+                <div className="xl:mr-2 text-xl">
+                  <MdOutlinePersonOutline />
+                </div>
 
-          <span className="hidden xl:block">Profile</span>
-        </Link>
+                <span className="hidden xl:block">Profile</span>
+              </>
+            )
+          }
+        </NavLink>
       </nav>
 
       <div className="hidden xl:block">
@@ -82,7 +155,10 @@ const Sidebar = () => {
         </button>
       </div>
       <div className="flex justify-center xl:hidden">
-        <button className="bg-primary-color-100 hover:bg-primary-color-200 active:bg-primary-color-100 text-secondary-color-100 flex justify-center items-center  rounded-[50%] w-12 h-12 p-2 text-center ">
+        <button
+          onClick={() => setShowPostModal(true)}
+          className="bg-primary-color-100 hover:bg-primary-color-200 active:bg-primary-color-100 text-secondary-color-100 flex justify-center items-center  rounded-[50%] w-12 h-12 p-2 text-center "
+        >
           <MdOutlineEdit />
         </button>
       </div>
