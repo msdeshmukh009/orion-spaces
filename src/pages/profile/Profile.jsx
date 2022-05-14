@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { MdLogout, MdPhotoCamera } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { logout } from "../../features/auth/authSlice";
 import { Avatar, Base, MainTopBar, Modal, UserPost } from "../../components";
 
 const Profile = () => {
   const [showUpdateProfileModal, setShowUpdateProfileModal] = useState(false);
+
+  const dispatch = useDispatch();
+
   return (
     <Base>
       <Modal showModal={showUpdateProfileModal}>
@@ -64,7 +69,7 @@ const Profile = () => {
         <MainTopBar title={"The Cool User"} />
 
         <div className="flex justify-end px-2">
-          <button className="text-xl" title="Log Out">
+          <button className="text-xl" title="Log Out" onClick={() => dispatch(logout())}>
             <MdLogout />
           </button>
         </div>
