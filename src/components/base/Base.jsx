@@ -7,6 +7,7 @@ import { usePostModal } from "../../hooks";
 
 const Base = ({ children }) => {
   const { showPostModal, setShowPostModal } = usePostModal();
+
   return (
     <div className="bg-background-color dark:bg-background-color-dm text-text-color dark:text-text-color-dm">
       <Modal showModal={showPostModal}>

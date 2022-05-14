@@ -1,13 +1,33 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Loading } from "../loading/Loading";
 
-const Avatar = () => {
+const Avatar = ({ username }) => {
+  const {
+    user: { users, isLoading },
+  } = useSelector(state => state);
+
+  const currentUser = users.find(user => user.username === username);
+
+  const currentUserInitials = `${
+    currentUser?.firstName ? currentUser?.firstName[0].toUpperCase() : ""
+  } ${currentUser?.lastName ? currentUser?.lastName[0].toUpperCase() : ""}`;
+
   return (
-    <Link to="/profile">
-      <img
-        className="rounded-[50%]"
-        src="https://avatars.dicebear.com/api/avataaars/your-custom-seed52.svg"
-        alt="user-name"
-      />
+    <Link to={`/profile/${currentUser?.username}`}>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          {currentUser?.profileUrl ? (
+            <img className="rounded-[50%] w-full" src={currentUser?.profileUrl} alt="user-name" />
+          ) : (
+            <div className="bg-primary-color-100 w-14 h-14 rounded-[50%] flex justify-center items-center text-xl">
+              {currentUserInitials}
+            </div>
+          )}
+        </>
+      )}
     </Link>
   );
 };

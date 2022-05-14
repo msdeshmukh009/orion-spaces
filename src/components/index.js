@@ -13,3 +13,4 @@ export { MainTopBar } from "./main-top-bar/MainTopBar";
 export { CommentNotification, LikeNotification } from "./notifications";
 export { Modal } from "./modal/Modal";
 export { Loading } from "./loading/Loading";
+export { UpdateProfileModal } from "./update-profile-modal/UpdateProfileModal";

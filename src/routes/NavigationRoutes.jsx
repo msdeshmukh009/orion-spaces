@@ -34,7 +34,7 @@ const NavigationRoutes = () => {
       <Route element={<PrivateRoute />}>
         <Route path="/home" element={<Home />} />
         <Route path="/post-detail" element={<PostDetail />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/:username" element={<Profile />} />
         <Route path="/bookmark" element={<Bookmark />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/notifications" element={<Notifications />} />

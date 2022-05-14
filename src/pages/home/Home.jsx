@@ -8,11 +8,9 @@ const Home = () => {
   return (
     <Base>
       <MainTopBar title={"Home"} />
-
       <div className="hidden sm:block">
         <TextEditor />
       </div>
-
       <div className="flex justify-between p-2 text-xl border-y-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
         <h3>Latest Posts</h3>
         <div className="relative">
@@ -34,7 +32,6 @@ const Home = () => {
         </div>
       </div>
 
-      <UserPost />
       <UserPost />
       <UserPost />
       <UserPost />

@@ -1,10 +1,14 @@
+import { useSelector } from "react-redux";
 import { Avatar } from "../avatar/Avatar";
 
 const TextEditor = () => {
+  const {
+    auth: { userData },
+  } = useSelector(state => state);
   return (
     <div className="flex gap-2 p-2">
       <div className="hidden sm:block basis-14 shrink-0">
-        <Avatar />
+        <Avatar username={userData.username} />
       </div>
       <div className="w-full">
         <textarea

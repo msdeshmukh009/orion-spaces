@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { loginHelper, signupHelper } from "./helpers";
 
 const initialState = {
-  token: localStorage.getItem("Spaces_User")?.token || "",
-  userData: localStorage.getItem("Spaces_User")?.userData || {},
+  token: JSON.parse(localStorage.getItem("Spaces_User"))?.token || "",
+  userData: JSON.parse(localStorage.getItem("Spaces_User"))?.userData || {},
   isLoading: false,
   error: "",
 };
