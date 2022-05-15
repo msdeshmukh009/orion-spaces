@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdPhotoCamera } from "react-icons/md";
 import { updateUser } from "../../features/user/helpers";
-import { setLoading, startUploading } from "../../features/user/userSlice";
+import { startUploading } from "../../features/user/userSlice";
 import { Modal } from "../modal/Modal";
 
 const UpdateProfileModal = ({ showUpdateProfileModal, setShowUpdateProfileModal, currentUser }) => {

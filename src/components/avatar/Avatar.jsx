@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Loading } from "../loading/Loading";
 
 const Avatar = ({ username }) => {
   const {
-    user: { users, isLoading },
+    user: { users },
   } = useSelector(state => state);
 
   const currentUser = users.find(user => user.username === username);
