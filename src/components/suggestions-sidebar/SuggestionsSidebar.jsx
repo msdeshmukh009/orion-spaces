@@ -1,14 +1,21 @@
 import { MdOutlineSearch } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { followUser } from "../../features/user/helpers";
 import { Link } from "react-router-dom";
 
 const SuggestionsSidebar = () => {
   const {
     user: { users },
-    auth: { userData },
+    auth: { token, userData },
   } = useSelector(state => state);
 
-  const suggestionList = users.filter(currentUser => currentUser.username !== userData.username);
+  const dispatch = useDispatch();
+
+  const suggestionList = users.filter(
+    currentUser =>
+      currentUser.username !== userData.username &&
+      !currentUser.followers.find(user => user.username === userData.username)
+  );
 
   const Suggestion = ({ currentUser }) => {
     return (
@@ -41,6 +48,7 @@ const SuggestionsSidebar = () => {
 
         <div>
           <button
+            onClick={() => dispatch(followUser({ followUserId: currentUser._id, token }))}
             title={`Follow ${currentUser?.firstName} ${currentUser?.lastName} `}
             className="bg-dark-color px-2 py-1 xl:w-full rounded-[30rem] text-background-color"
           >
