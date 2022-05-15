@@ -15,18 +15,12 @@ const Avatar = ({ username }) => {
 
   return (
     <Link to={`/profile/${currentUser?.username}`}>
-      {isLoading ? (
-        <Loading />
+      {currentUser?.profileUrl ? (
+        <img className="rounded-[50%] w-full" src={currentUser?.profileUrl} alt="user-name" />
       ) : (
-        <>
-          {currentUser?.profileUrl ? (
-            <img className="rounded-[50%] w-full" src={currentUser?.profileUrl} alt="user-name" />
-          ) : (
-            <div className="bg-primary-color-100 w-14 h-14 rounded-[50%] flex justify-center items-center text-xl">
-              {currentUserInitials}
-            </div>
-          )}
-        </>
+        <div className="bg-primary-color-100 w-14 h-14 rounded-[50%] flex justify-center items-center text-xl">
+          {currentUserInitials}
+        </div>
       )}
     </Link>
   );
