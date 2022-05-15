@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdPhotoCamera } from "react-icons/md";
 import { updateUser } from "../../features/user/helpers";
-import { setLoading } from "../../features/user/userSlice";
+import { setLoading, startUploading } from "../../features/user/userSlice";
 import { Modal } from "../modal/Modal";
 
 const UpdateProfileModal = ({ showUpdateProfileModal, setShowUpdateProfileModal, currentUser }) => {
@@ -24,7 +24,7 @@ const UpdateProfileModal = ({ showUpdateProfileModal, setShowUpdateProfileModal,
   const updateUserDetails = async e => {
     e.preventDefault();
     if (imageUrl) {
-      dispatch(setLoading());
+      dispatch(startUploading());
       const file = imageUrl;
       const formData = new FormData();
       formData.append("file", file);
@@ -100,7 +100,7 @@ const UpdateProfileModal = ({ showUpdateProfileModal, setShowUpdateProfileModal,
           <label className="flex flex-col gap-1">
             <span className="font-bold">Bio</span>
             <input
-              value={profile.bio}
+              value={profile?.bio}
               onChange={e => setProfile(prev => ({ ...prev, bio: e.target.value }))}
               className="w-full bg-opacity-20 focus:ring-2 rounded border border-secondary-color-200 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:text-text-color"
               type="text"
@@ -110,7 +110,7 @@ const UpdateProfileModal = ({ showUpdateProfileModal, setShowUpdateProfileModal,
           <label className="flex flex-col gap-1">
             <span className="font-bold">Website</span>
             <input
-              value={profile.website}
+              value={profile?.website}
               onChange={e => setProfile(prev => ({ ...prev, website: e.target.value }))}
               className="w-full bg-opacity-20 focus:ring-2 rounded border border-secondary-color-200 text-base outline-none py-1 px-3 leading-8 transition-colors duration-200 ease-in-out dark:text-text-color"
               type="url"
