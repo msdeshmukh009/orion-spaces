@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { followUser, unFollowUser } from "../../features/user/helpers";
 import { Modal } from "../modal/Modal";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { useDetectClickOutside } from "../../hooks";
 
 const FollowInfoModal = ({
   showFollowersModal,
@@ -11,6 +12,10 @@ const FollowInfoModal = ({
   showFollowing,
 }) => {
   const dispatch = useDispatch();
+
+  const followListRef = useRef(null);
+
+  useDetectClickOutside(followListRef, setShowFollowersModal);
 
   const { token, userData } = useSelector(state => state.auth);
 
@@ -81,7 +86,10 @@ const FollowInfoModal = ({
 
   return (
     <Modal showModal={showFollowersModal}>
-      <div className=" bg-secondary-color-50 dark:bg-secondary-color-dm-50 p-2 rounded-md w-80 max-h-80  overflow-auto no-scrollbar">
+      <div
+        ref={followListRef}
+        className=" bg-secondary-color-50 dark:bg-secondary-color-dm-50 p-2 rounded-md w-80 max-h-80  overflow-auto no-scrollbar"
+      >
         <div className="flex justify-end">
           <button onClick={() => setShowFollowersModal(false)}>x</button>
         </div>

@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { GiSettingsKnobs } from "react-icons/gi";
 import { MdTrendingUp, MdStarOutline } from "react-icons/md";
 import { TextEditor, UserPost, Base, MainTopBar } from "../../components";
+import { useDetectClickOutside } from "../../hooks";
 
 const Home = () => {
   const [showSortingOptions, setShowSortingOptions] = useState(false);
+  const sortingListRef = useRef(null);
+  useDetectClickOutside(sortingListRef, setShowSortingOptions);
   return (
     <Base>
       <MainTopBar title={"Home"} />
@@ -18,6 +21,7 @@ const Home = () => {
             <GiSettingsKnobs />
           </button>
           <div
+            ref={sortingListRef}
             className={`${
               showSortingOptions ? "flex" : "hidden"
             } absolute justify-center flex-col gap-1 top-5 right-4 w-24 text-sm shadow-lg p-1 rounded-md bg-secondary-color-100 dark:bg-secondary-color-dm-100`}
