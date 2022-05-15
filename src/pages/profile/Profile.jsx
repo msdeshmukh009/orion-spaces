@@ -3,13 +3,24 @@ import { useParams } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/auth/authSlice";
-import { Base, Loading, MainTopBar, UserPost, UpdateProfileModal } from "../../components";
+import { followUser, unFollowUser } from "../../features/user/helpers";
+import {
+  Base,
+  Loading,
+  MainTopBar,
+  UserPost,
+  UpdateProfileModal,
+  FollowInfoModal,
+} from "../../components";
 
 const Profile = () => {
   const [showUpdateProfileModal, setShowUpdateProfileModal] = useState(false);
+  const [showFollowersModal, setShowFollowersModal] = useState(false);
+  const [showFollowing, setShowFollowing] = useState(false);
+
   const {
-    auth: { userData },
-    user: { users, isLoading },
+    auth: { token, userData },
+    user: { users, uploadingPhoto },
   } = useSelector(state => state);
 
   const { username } = useParams();
@@ -26,6 +37,13 @@ const Profile = () => {
     <Base>
       <main>
         <MainTopBar title={currentUser?.username} />
+
+        <FollowInfoModal
+          setShowFollowersModal={setShowFollowersModal}
+          showFollowersModal={showFollowersModal}
+          currentUser={currentUser}
+          showFollowing={showFollowing}
+        />
 
         <UpdateProfileModal
           showUpdateProfileModal={showUpdateProfileModal}
@@ -44,7 +62,7 @@ const Profile = () => {
         <section className="flex flex-col items-center">
           {currentUser?.profileUrl ? (
             <div className="w-40 h-40 border-2 rounded-[50%] border-secondary-color-50 dark:border-secondary-color-dm-50">
-              {isLoading ? (
+              {uploadingPhoto ? (
                 <div className="flex h-full justify-center items-center">
                   <Loading />
                 </div>
@@ -87,8 +105,18 @@ const Profile = () => {
             >
               Edit Profile
             </button>
+          ) : currentUser?.followers.find(user => user?.username === userData?.username) ? (
+            <button
+              onClick={() => dispatch(unFollowUser({ followUserId: currentUser._id, token }))}
+              className="border-2 px-4 py-1 rounded-[30rem] font-bold hover:text-red-color hover:border-red-color border-secondary-color-100 hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100"
+            >
+              Unfollow
+            </button>
           ) : (
-            <button className="border-2 px-4 py-1 rounded-[30rem] font-bold border-secondary-color-100 hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100">
+            <button
+              onClick={() => dispatch(followUser({ followUserId: currentUser._id, token }))}
+              className="border-2 px-4 py-1 rounded-[30rem] font-bold border-secondary-color-100 hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100"
+            >
               Follow
             </button>
           )}
@@ -102,7 +130,13 @@ const Profile = () => {
         </section>
 
         <section className="flex p-2 w-72 m-auto rounded-lg bg-secondary-color-100 dark:bg-secondary-color-dm-100">
-          <div className="flex-1 flex flex-col text-center">
+          <div
+            onClick={() => {
+              setShowFollowing(true);
+              setShowFollowersModal(true);
+            }}
+            className="cursor-pointer flex-1 flex flex-col text-center"
+          >
             <span>Following</span>
             <span>{currentUser?.following.length}</span>
           </div>
@@ -110,7 +144,13 @@ const Profile = () => {
             <span>Posts</span>
             <span>0</span>
           </div>
-          <div className="flex-1 flex flex-col text-center">
+          <div
+            onClick={() => {
+              setShowFollowing(false);
+              setShowFollowersModal(true);
+            }}
+            className="cursor-pointer flex-1 flex flex-col text-center"
+          >
             <span>Followers</span>
             <span>{currentUser?.followers.length}</span>
           </div>
