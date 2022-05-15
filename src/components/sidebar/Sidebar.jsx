@@ -15,10 +15,16 @@ import {
 import { BsMoon } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
 import { usePostModal, useTheme } from "../../hooks";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
   const { currentTheme, toggleTheme } = useTheme();
   const { setShowPostModal } = usePostModal();
+
+  const {
+    auth: { userData },
+  } = useSelector(state => state);
+
   const NAV_LINK_STYLES =
     "flex items-center justify-center xl:justify-start px-2 py-2 text-xl mb-3 w-fit rounded-[30rem] hover:bg-secondary-color-100 hover:dark:bg-secondary-color-dm-100";
 
@@ -123,7 +129,7 @@ const Sidebar = () => {
             )
           }
         </NavLink>
-        <NavLink to="/profile" className={NAV_LINK_STYLES}>
+        <NavLink to={`/profile/${userData?.username}`} className={NAV_LINK_STYLES}>
           {({ isActive }) =>
             isActive ? (
               <>
