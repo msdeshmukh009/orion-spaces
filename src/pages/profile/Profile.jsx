@@ -21,6 +21,7 @@ const Profile = () => {
   const {
     auth: { token, userData },
     user: { users, uploadingPhoto },
+    posts: { posts },
   } = useSelector(state => state);
 
   const { username } = useParams();
@@ -28,6 +29,8 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   const currentUser = users.find(user => user.username === username);
+
+  const currentUsersPosts = posts.filter(post => post.username === username);
 
   const currentUserInitials = `${
     currentUser?.firstName ? currentUser?.firstName[0].toUpperCase() : ""
@@ -142,7 +145,7 @@ const Profile = () => {
           </div>
           <div className="flex-1 flex flex-col text-center">
             <span>Posts</span>
-            <span>0</span>
+            <span>{currentUsersPosts.length}</span>
           </div>
           <div
             onClick={() => {
@@ -157,11 +160,12 @@ const Profile = () => {
         </section>
 
         <section className="mt-2 p-2">
-          <h2 className="text-xl font-bold mb-2">Your Posts</h2>
-          <UserPost />
-          <UserPost />
-          <UserPost />
-          <UserPost />
+          <h2 className="text-xl font-bold mb-2">
+            {username === userData?.username ? "Your" : `${currentUser?.firstName}'s`} Posts
+          </h2>
+          {currentUsersPosts.map(post => (
+            <UserPost key={post._id} post={post} />
+          ))}
         </section>
       </main>
     </Base>
