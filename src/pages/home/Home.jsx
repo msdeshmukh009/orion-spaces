@@ -13,13 +13,29 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-  const { posts } = useSelector(state => state.posts);
+  const {
+    posts: { posts },
+    auth: { userData },
+    user: { users },
+  } = useSelector(state => state);
 
   useEffect(() => {
     dispatch(getAllPosts());
   }, [dispatch]);
 
   useDetectClickOutside(sortingListRef, setShowSortingOptions);
+
+  const getUserByUserName = username => users.filter(user => user.username === username)[0];
+
+  const postsForUser = posts.filter(post => {
+    return (
+      post.username === userData.username ||
+      getUserByUserName(post?.username)?.followers?.find(
+        user => user.username === userData.username
+      )
+    );
+  });
+
   return (
     <Base>
       <MainTopBar title={"Home"} />
@@ -55,7 +71,7 @@ const Home = () => {
         </div>
       </div>
 
-      {posts.map(post => (
+      {postsForUser?.map(post => (
         <UserPost key={post._id} post={post} />
       ))}
     </Base>
