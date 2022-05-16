@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const followUser = createAsyncThunk(
   "user/follow",
@@ -12,6 +13,7 @@ const followUser = createAsyncThunk(
       );
 
       if (status === 200) {
+        toast.success(`You are now following ${data.followUser.firstName}`);
         return data;
       }
     } catch (err) {

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const unFollowUser = createAsyncThunk(
   "user/unfollow",
@@ -15,6 +16,7 @@ const unFollowUser = createAsyncThunk(
         }
       );
       if (status === 200) {
+        toast.success(`You just unfollowed ${data.followUser.firstName}`);
         return data;
       }
     } catch (error) {
