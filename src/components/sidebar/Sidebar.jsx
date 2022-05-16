@@ -14,12 +14,14 @@ import {
 } from "react-icons/md";
 import { BsMoon } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
-import { usePostModal, useTheme } from "../../hooks";
-import { useSelector } from "react-redux";
+import { useTheme } from "../../hooks";
+import { useDispatch, useSelector } from "react-redux";
+import { openPostModal } from "../../features/post/postSlice";
 
 const Sidebar = () => {
   const { currentTheme, toggleTheme } = useTheme();
-  const { setShowPostModal } = usePostModal();
+
+  const dispatch = useDispatch();
 
   const {
     auth: { userData },
@@ -154,7 +156,9 @@ const Sidebar = () => {
 
       <div className="hidden xl:block">
         <button
-          onClick={() => setShowPostModal(true)}
+          onClick={() => {
+            dispatch(openPostModal());
+          }}
           className="bg-primary-color-100 hover:bg-primary-color-200 active:bg-primary-color-100 text-secondary-color-100 text-xl rounded-[30rem] p-2 w-3/4"
         >
           Post
@@ -162,7 +166,7 @@ const Sidebar = () => {
       </div>
       <div className="flex justify-center xl:hidden">
         <button
-          onClick={() => setShowPostModal(true)}
+          onClick={() => dispatch(openPostModal())}
           className="bg-primary-color-100 hover:bg-primary-color-200 active:bg-primary-color-100 text-secondary-color-100 flex justify-center items-center  rounded-[50%] w-12 h-12 p-2 text-center "
         >
           <MdOutlineEdit />
