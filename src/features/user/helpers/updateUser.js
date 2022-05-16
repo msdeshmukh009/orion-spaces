@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const updateUser = createAsyncThunk(
   "user/update",
@@ -10,8 +11,9 @@ const updateUser = createAsyncThunk(
         { userData },
         { headers: { authorization: token } }
       );
-      console.log(data);
+
       if (status === 201) {
+        toast.success("Profile updated");
         return data.user;
       }
     } catch (err) {

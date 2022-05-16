@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { PostModalProvider, ThemeProvider } from "./context";
+import { ThemeProvider } from "./context";
 import { Provider } from "react-redux";
 import store from "./app/store";
 
@@ -19,9 +19,7 @@ root.render(
     <BrowserRouter>
       <Provider store={store}>
         <ThemeProvider>
-          <PostModalProvider>
-            <App />
-          </PostModalProvider>
+          <App />
         </ThemeProvider>
       </Provider>
     </BrowserRouter>
