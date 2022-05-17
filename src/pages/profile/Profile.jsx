@@ -139,7 +139,12 @@ const Profile = () => {
 
           <div className="max-w-lg text-center my-2">
             <p>{currentUser?.bio}</p>
-            <a href={currentUser?.website} target="_blank" className="text-primary-color-100">
+            <a
+              href={currentUser?.website}
+              target="_blank"
+              rel="noreferrer"
+              className="text-primary-color-100"
+            >
               {currentUser?.website}
             </a>
           </div>

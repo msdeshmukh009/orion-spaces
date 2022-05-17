@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { GiSettingsKnobs } from "react-icons/gi";
-import { MdTrendingUp, MdStarOutline } from "react-icons/md";
+import { MdTrendingUp } from "react-icons/md";
 import { BsSortDown, BsSortUp } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { TextEditor, UserPost, Base, MainTopBar } from "../../components";

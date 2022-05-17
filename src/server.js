@@ -24,7 +24,6 @@ import {
 } from "./backend/controllers/UserController";
 
 import {
-  getPostCommentsHandler,
   addPostCommentHandler,
   editPostCommentHandler,
   deletePostCommentHandler,
