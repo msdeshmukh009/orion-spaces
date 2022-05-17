@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   MdOutlineModeComment,
   MdOutlineBookmarkBorder,
@@ -7,8 +7,10 @@ import {
 } from "react-icons/md";
 import { IoMdHeartEmpty } from "react-icons/io";
 
-const PostCtaBar = ({ likeCount }) => {
+const PostCtaBar = ({ likeCount, postId, commentCount }) => {
   const { pathname } = useLocation();
+
+  const navigate = useNavigate();
 
   return (
     <div className="flex justify-between gap-4 w-full p-2">
@@ -29,13 +31,14 @@ const PostCtaBar = ({ likeCount }) => {
         <button
           onClick={e => {
             e.stopPropagation();
+            if (postId) navigate(`/post/${postId}`);
           }}
           className="flex gap-2 text-xl rounded-[30rem] p-2 hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100"
           title="Reply"
         >
           <MdOutlineModeComment />
         </button>
-        <span className="text-sm p-2 rounded-[50%]">{}</span>
+        <span className="text-sm p-2 rounded-[50%]">{commentCount > 0 ? commentCount : ""}</span>
       </div>
 
       <button
