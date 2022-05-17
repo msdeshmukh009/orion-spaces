@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MdLogout } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import { getAllPosts } from "../../features/post/helpers";
 import { logout } from "../../features/auth/authSlice";
 import { followUser, unFollowUser } from "../../features/user/helpers";
 import {
@@ -24,9 +25,13 @@ const Profile = () => {
     posts: { posts },
   } = useSelector(state => state);
 
-  const { username } = useParams();
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllPosts());
+  }, [dispatch]);
+
+  const { username } = useParams();
 
   const currentUser = users.find(user => user.username === username);
 
