@@ -2,11 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getAllPosts, addComment } from "../../features/post/helpers";
-import { Base, Avatar, PostCtaBar, Comment, MainTopBar, Loading } from "../../components";
+import {
+  Base,
+  Avatar,
+  PostCtaBar,
+  Comment,
+  MainTopBar,
+  Loading,
+  LikesModal,
+} from "../../components";
 import { useFocus } from "../../hooks";
 
 const PostDetail = () => {
   const [commentData, setCommentData] = useState({ content: "" });
+  const [showLikesModal, setShowLikesModal] = useState(false);
 
   const { postId } = useParams();
 
@@ -37,6 +46,12 @@ const PostDetail = () => {
       <>
         <MainTopBar title={"Post"} />
 
+        <LikesModal
+          showLikesModal={showLikesModal}
+          setShowLikesModal={setShowLikesModal}
+          post={currentPost}
+        />
+
         {isLoading ? (
           <div className="flex justify-center items-center min-h-[10rem]">
             <Loading />
@@ -60,12 +75,13 @@ const PostDetail = () => {
               <span className="block text-secondary-color-200 mt-2">{currentPost?.createdAt}</span>
             </div>
             <div className="flex items-center gap-4 p-2 min-h-[2rem] border-t-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
-              <span>
+              <span className=" cursor-pointer" onClick={() => setShowLikesModal(true)}>
                 {currentPost?.likes?.likeCount === 0 ? (
                   ""
                 ) : (
                   <>
-                    <span className="font-bold">{currentPost?.likes?.likesCount}</span> Likes
+                    <span className="font-bold">{currentPost?.likes?.likeCount}</span>{" "}
+                    {currentPost?.likes?.likeCount > 1 ? "Likes" : "Like"}
                   </>
                 )}
               </span>
@@ -82,7 +98,14 @@ const PostDetail = () => {
             </div>
 
             <div className="border-t-2 border-secondary-color-100 dark:border-secondary-color-dm-50">
-              <PostCtaBar />
+              <PostCtaBar
+                likes={currentPost?.likes}
+                postId={currentPost?.id}
+                post_Id={currentPost?._id}
+                commentCount={currentPost?.comments?.length}
+                token={token}
+                currentUser={userData}
+              />
             </div>
 
             <div className="flex gap-2 justify-between items-center p-2 border-y-2 border-secondary-color-50 dark:border-secondary-color-dm-50">

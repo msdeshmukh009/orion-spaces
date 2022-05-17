@@ -5,3 +5,5 @@ export { deletePost } from "./deletePost";
 export { addComment } from "./addComment";
 export { deleteComment } from "./deleteComment";
 export { editComment } from "./editComment";
+export { addLike } from "./addLike";
+export { deleteLike } from "./deleteLike";

@@ -34,7 +34,7 @@ export const getPostCommentsHandler = function (schema, request) {
 
 export const addPostCommentHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
-  console.log(user, "user");
+
   try {
     if (!user) {
       return new Response(
@@ -47,7 +47,7 @@ export const addPostCommentHandler = function (schema, request) {
     }
     const { postId } = request.params;
     const { commentData } = JSON.parse(request.requestBody);
-    console.log(commentData, "commentData");
+
     const comment = {
       _id: uuid(),
       ...commentData,

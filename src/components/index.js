@@ -16,3 +16,5 @@ export { Loading } from "./loading/Loading";
 export { UpdateProfileModal } from "./update-profile-modal/UpdateProfileModal";
 export { FollowInfoModal } from "./follow-info-modal/FollowInfoModal";
 export { EditPostModal } from "./edit-post-modal/EditPostModal";
+export { LikesModal } from "./likes-modal/LikesModal";
+export { User } from "./user/User";

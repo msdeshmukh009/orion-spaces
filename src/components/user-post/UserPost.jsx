@@ -97,9 +97,12 @@ const UserPost = ({ post }) => {
         </div>
 
         <PostCtaBar
-          likeCount={post?.likes?.likeCount}
-          postId={post.id}
+          likes={post?.likes}
+          postId={post?.id}
+          post_Id={post?._id}
           commentCount={post?.comments?.length}
+          token={token}
+          currentUser={userData}
         />
       </div>
 

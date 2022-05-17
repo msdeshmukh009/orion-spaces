@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 const addComment = createAsyncThunk(
   "/post/addComment",
   async ({ postId, token, commentData }, { rejectWithValue }) => {
-    console.log(postId, token, commentData);
     try {
       const { status, data } = await axios.post(
         `/api/comments/add/${postId}`,

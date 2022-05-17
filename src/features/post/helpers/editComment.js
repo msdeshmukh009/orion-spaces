@@ -13,7 +13,7 @@ const editComment = createAsyncThunk(
           headers: { authorization: token },
         }
       );
-      console.log(data);
+
       if (status === 201) {
         toast.success("Comment updated");
         return data.posts;
