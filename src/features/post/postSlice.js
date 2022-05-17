@@ -1,5 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllPosts, addPost, editPost, deletePost } from "./helpers";
+import {
+  getAllPosts,
+  addPost,
+  editPost,
+  deletePost,
+  addComment,
+  deleteComment,
+  editComment,
+} from "./helpers";
 
 const initialState = {
   isLoading: false,
@@ -41,6 +49,29 @@ const extraReducers = {
     state.error = "";
   },
   [deletePost.rejected]: (state, { payload }) => {
+    state.error = payload;
+  },
+  [addComment.pending]: state => {
+    state.isLoading = true;
+  },
+  [addComment.fulfilled]: (state, { payload }) => {
+    state.isLoading = false;
+    state.posts = payload;
+  },
+  [addComment.rejected]: (state, { payload }) => {
+    state.isLoading = false;
+    state.error = payload;
+  },
+  [deleteComment.fulfilled]: (state, { payload }) => {
+    state.posts = payload;
+  },
+  [deleteComment.rejected]: (state, { payload }) => {
+    state.error = payload;
+  },
+  [editComment.fulfilled]: (state, { payload }) => {
+    state.posts = payload;
+  },
+  [editComment.rejected]: (state, { payload }) => {
     state.error = payload;
   },
 };
