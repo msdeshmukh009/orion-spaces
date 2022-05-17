@@ -43,6 +43,17 @@ const extraReducers = {
   },
 };
 
-const bookmarkSlice = createSlice({ name: "bookmark", initialState, reducers: {}, extraReducers });
+const bookmarkSlice = createSlice({
+  name: "bookmark",
+  initialState,
+  reducers: {
+    restBookmarks: state => {
+      state.bookmarks = [];
+    },
+  },
+  extraReducers,
+});
+
+export const { restBookmarks } = bookmarkSlice.actions;
 
 export default bookmarkSlice.reducer;

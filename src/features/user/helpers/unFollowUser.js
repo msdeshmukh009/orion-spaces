@@ -19,8 +19,8 @@ const unFollowUser = createAsyncThunk(
         toast.success(`You just unfollowed ${data.followUser.firstName}`);
         return data;
       }
-    } catch (error) {
-      return rejectWithValue(error.response.data.errors[0].split(".")[0]);
+    } catch (err) {
+      return rejectWithValue(err.response.data.errors[0]);
     }
   }
 );

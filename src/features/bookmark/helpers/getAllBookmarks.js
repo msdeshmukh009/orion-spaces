@@ -11,9 +11,11 @@ const getAllBookmarks = createAsyncThunk(
       if (status === 200) {
         return data.bookmarks;
       }
-    } catch (error) {
-      return rejectWithValue(error.response.data.errors[0].split(".")[0]);
+    } catch (err) {
+      console.log(err);
+      return rejectWithValue(err.response.data.errors[0]);
     }
   }
 );
+
 export { getAllBookmarks };

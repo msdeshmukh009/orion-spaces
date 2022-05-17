@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "../../features/post/helpers";
 import { logout } from "../../features/auth/authSlice";
 import { followUser, unFollowUser } from "../../features/user/helpers";
+import { restBookmarks } from "../../features/bookmark/bookmarkSlice";
 import {
   Base,
   Loading,
@@ -61,7 +62,14 @@ const Profile = () => {
 
         {currentUser?.username === userData.username ? (
           <div className="flex justify-end px-2">
-            <button className="text-xl" title="Log Out" onClick={() => dispatch(logout())}>
+            <button
+              className="text-xl"
+              title="Log Out"
+              onClick={() => {
+                dispatch(restBookmarks());
+                dispatch(logout());
+              }}
+            >
               <MdLogout />
             </button>
           </div>
@@ -131,7 +139,7 @@ const Profile = () => {
 
           <div className="max-w-lg text-center my-2">
             <p>{currentUser?.bio}</p>
-            <a href="cool-user.com" target="_blank" className="text-primary-color-100">
+            <a href={currentUser?.website} target="_blank" className="text-primary-color-100">
               {currentUser?.website}
             </a>
           </div>

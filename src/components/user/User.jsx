@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const User = ({ user, currentUser, token }) => {
   const dispatch = useDispatch();
+
   return (
     <div className="flex flex-wrap items-center gap-2 p-2 rounded-md hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100">
       <div className="basis-14 shrink-0">

@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBookmarks } from "../../features/bookmark/helpers";
-import { Base, MainTopBar, UserPost } from "../../components";
+import { Base, Loading, MainTopBar, UserPost } from "../../components";
 
 const Bookmark = () => {
   const {
-    bookmarks: { bookmarks },
+    bookmarks: { bookmarks, isLoading },
     auth: { token },
     posts: { posts },
   } = useSelector(state => state);
@@ -13,8 +13,8 @@ const Bookmark = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllBookmarks(token));
-  }, [token]);
+    dispatch(getAllBookmarks({ token }));
+  }, [token, dispatch]);
 
   const currentBookmarks = posts?.filter(post => bookmarks.includes(post._id));
 
@@ -23,12 +23,21 @@ const Bookmark = () => {
       <main>
         <MainTopBar title={"Bookmarks"} />
         <section>
-          <h1 className="text-center text-2xl p-4">
-            {bookmarks?.length ? "" : "No bookmarks added"}
-          </h1>
-          {currentBookmarks?.map(post => (
-            <UserPost key={post._id} post={post} />
-          ))}
+          {isLoading ? (
+            <div className="flex justify-center mt-4">
+              <Loading />
+            </div>
+          ) : (
+            <>
+              {" "}
+              <h1 className="text-center text-2xl p-4">
+                {bookmarks?.length ? "" : "No bookmarks added"}
+              </h1>
+              {currentBookmarks?.map(post => (
+                <UserPost key={post._id} post={post} />
+              ))}
+            </>
+          )}
         </section>
       </main>
     </Base>

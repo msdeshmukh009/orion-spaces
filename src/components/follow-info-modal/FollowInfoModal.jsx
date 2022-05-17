@@ -97,8 +97,8 @@ const FollowInfoModal = ({
           <h1 className="text-xl text-center">{showFollowing ? "Following" : "Followers"}</h1>
 
           {showFollowing
-            ? currentUser?.following.map(user => <User user={user} />)
-            : currentUser?.followers.map(user => <User user={user} />)}
+            ? currentUser?.following.map(user => <User key={user._id} user={user} />)
+            : currentUser?.followers.map(user => <User key={user._id} user={user} />)}
           <h2 className="text-center mt-2">{showMessage()}</h2>
         </div>
       </div>
