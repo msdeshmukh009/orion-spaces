@@ -6,6 +6,8 @@ const initialState = {
   uploadingPhoto: false,
   error: "",
   users: [],
+  searchTerm: "",
+  foundUsers: [],
 };
 
 const extraReducers = {
@@ -85,10 +87,19 @@ export const userSlice = createSlice({
     startUploading: state => {
       state.uploadingPhoto = true;
     },
+    searchUser: (state, { payload }) => {
+      state.searchTerm = payload;
+      state.foundUsers = state.users.filter(
+        user =>
+          user.username.toLowerCase().includes(payload.trim().toLowerCase()) ||
+          user.firstName.toLowerCase().includes(payload.trim().toLowerCase()) ||
+          user.lastName.toLowerCase().includes(payload.trim().toLowerCase())
+      );
+    },
   },
   extraReducers,
 });
 
-export const { setLoading, startUploading } = userSlice.actions;
+export const { setLoading, startUploading, searchUser } = userSlice.actions;
 
 export default userSlice.reducer;

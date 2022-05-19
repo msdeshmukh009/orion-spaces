@@ -8,7 +8,7 @@ const User = ({ user, currentUser, token }) => {
   return (
     <div className="flex flex-wrap items-center gap-2 p-2 rounded-md hover:bg-secondary-color-100 dark:hover:bg-secondary-color-dm-100">
       <div className="basis-14 shrink-0">
-        {user.profileUrl ? (
+        {user?.profileUrl ? (
           <Link to={`/profile/${user?.username}`}>
             <img
               className="rounded-[50%]"

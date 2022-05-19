@@ -15,9 +15,9 @@ const Base = ({ children }) => {
 
   return (
     <div className="bg-background-color dark:bg-background-color-dm text-text-color dark:text-text-color-dm">
-      <EditPostModal />
-
       <MobileTopBar />
+
+      <EditPostModal />
 
       <div className="p-2 min-h-full max-w-7xl w-full sm:w-4/5 m-auto main-grid-layout">
         <Sidebar />

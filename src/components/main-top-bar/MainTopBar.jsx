@@ -8,7 +8,7 @@ const MainTopBar = ({ title }) => {
   const navigate = useNavigate();
 
   return (
-    <header className="sticky top-0 border-b-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
+    <header className="sticky z-10 top-0 border-b-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
       <div className="hidden p-2 sm:flex gap-2 items-center  bg-background-color dark:bg-background-color-dm">
         {pathname !== "/home" && (
           <button
