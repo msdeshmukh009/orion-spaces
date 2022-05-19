@@ -45,7 +45,8 @@ export const users = [
     updatedAt: formatDate(),
     bio: "And that’s why I turned one of your pistols into a banana. It’s your last meal. Take your time… enjoy it.",
     website: "",
-    profileUrl: "https://pbs.twimg.com/profile_images/1171546495704809473/1hgA0eJ3_400x400.jpg",
+    profileUrl:
+      "https://res.cloudinary.com/dxebdqoxr/image/upload/v1652987212/orion-spaces/jojo_2_dwhb1p.jpg",
     followers: [],
     following: [],
   },
