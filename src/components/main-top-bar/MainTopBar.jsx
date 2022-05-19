@@ -21,7 +21,7 @@ const MainTopBar = ({ title }) => {
         <h1 className="text-xl">{title}</h1>
       </div>
 
-      <div className="hidden sm:block lg:hidden">
+      <div className="hidden sm:block lg:hidden bg-background-color dark:bg-background-color-dm">
         <SearchBar />
       </div>
     </header>

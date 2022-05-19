@@ -1,5 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllPosts, addPost, editPost, deletePost } from "./helpers";
+import {
+  getAllPosts,
+  addPost,
+  editPost,
+  deletePost,
+  addComment,
+  deleteComment,
+  editComment,
+  addLike,
+  deleteLike,
+} from "./helpers";
 
 const initialState = {
   isLoading: false,
@@ -16,31 +26,66 @@ const extraReducers = {
   },
   [getAllPosts.fulfilled]: (state, { payload }) => {
     state.isLoading = false;
-    state.posts = payload.reverse();
+    state.posts = payload;
   },
   [getAllPosts.rejected]: (state, { payload }) => {
     state.isLoading = false;
     state.error = payload;
   },
   [addPost.fulfilled]: (state, { payload }) => {
-    state.posts = payload.reverse();
+    state.posts = payload;
     state.error = "";
   },
   [addPost.rejected]: (state, { payload }) => {
     state.error = payload;
   },
   [editPost.fulfilled]: (state, { payload }) => {
-    state.posts = payload.reverse();
+    state.posts = payload;
     state.error = "";
   },
   [editPost.rejected]: (state, { payload }) => {
     state.error = payload;
   },
   [deletePost.fulfilled]: (state, { payload }) => {
-    state.posts = payload.reverse();
+    state.posts = payload;
     state.error = "";
   },
   [deletePost.rejected]: (state, { payload }) => {
+    state.error = payload;
+  },
+  [addComment.pending]: state => {
+    state.isLoading = true;
+  },
+  [addComment.fulfilled]: (state, { payload }) => {
+    state.isLoading = false;
+    state.posts = payload;
+  },
+  [addComment.rejected]: (state, { payload }) => {
+    state.isLoading = false;
+    state.error = payload;
+  },
+  [deleteComment.fulfilled]: (state, { payload }) => {
+    state.posts = payload;
+  },
+  [deleteComment.rejected]: (state, { payload }) => {
+    state.error = payload;
+  },
+  [editComment.fulfilled]: (state, { payload }) => {
+    state.posts = payload;
+  },
+  [editComment.rejected]: (state, { payload }) => {
+    state.error = payload;
+  },
+  [addLike.fulfilled]: (state, { payload }) => {
+    state.posts = payload;
+  },
+  [addLike.rejected]: (state, { payload }) => {
+    state.error = payload;
+  },
+  [deleteLike.fulfilled]: (state, { payload }) => {
+    state.posts = payload;
+  },
+  [addLike.rejected]: (state, { payload }) => {
     state.error = payload;
   },
 };

@@ -73,7 +73,7 @@ const UserPost = ({ post }) => {
 
   return (
     <div
-      onClick={() => navigate("/post-detail")}
+      onClick={() => navigate(`/post/${post.id}`)}
       className="cursor-pointer flex rounded-md border-b-2 border-secondary-color-50 p-2 hover:bg-secondary-color-50 dark:border-secondary-color-dm-50 dark:hover:bg-secondary-color-dm-50"
     >
       <div onClick={e => e.stopPropagation()} className="basis-14 shrink-0">
@@ -89,14 +89,21 @@ const UserPost = ({ post }) => {
           </div>
 
           <div>
-            <p className="px-2 mt-2">{post?.content}</p>
+            <p className="px-2 mt-2 break-all">{post?.content}</p>
             <span className="text-secondary-color-dm-200 px-2 mt-2 inline-block">
               {post?.createdAt}
             </span>
           </div>
         </div>
 
-        <PostCtaBar likeCount={post?.likes?.likeCount} />
+        <PostCtaBar
+          likes={post?.likes}
+          postId={post?.id}
+          post_Id={post?._id}
+          commentCount={post?.comments?.length}
+          token={token}
+          currentUser={userData}
+        />
       </div>
 
       <div ref={optionsRef} className="relative">

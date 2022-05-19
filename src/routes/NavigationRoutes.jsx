@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Route, Routes, Navigate } from "react-router-dom";
+import Mockman from "mockman-js";
 import {
   Login,
   SignUp,
@@ -30,10 +31,10 @@ const NavigationRoutes = () => {
           <Route path="/sign-up" element={<Navigate to="/home" replace />} />
         </>
       )}
-
+      <Route path={"/mock"} element={<Mockman />} />
       <Route element={<PrivateRoute />}>
         <Route path="/home" element={<Home />} />
-        <Route path="/post-detail" element={<PostDetail />} />
+        <Route path="/post/:postId" element={<PostDetail />} />
         <Route path="/profile/:username" element={<Profile />} />
         <Route path="/bookmark" element={<Bookmark />} />
         <Route path="/explore" element={<Explore />} />

@@ -15,8 +15,9 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    comments: [],
     username: "adarshbalika",
-    createdAt: formatDate(),
+    createdAt: "02:48 PM May 25,2016",
     updatedAt: formatDate(),
   },
   {
@@ -28,8 +29,9 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    comments: [],
     username: "jojo_2",
-    createdAt: formatDate(),
+    createdAt: "02:48 PM January 10,2022",
     updatedAt: formatDate(),
   },
   {
@@ -41,8 +43,16 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    comments: [
+      {
+        content: "Maybe, I have different opinion",
+        _id: uuid(),
+        username: "jojo_2",
+        createdAt: formatDate(),
+      },
+    ],
     username: "adarshbalika",
-    createdAt: formatDate(),
+    createdAt: "02:00 AM May 25,2021",
     updatedAt: formatDate(),
   },
   {
@@ -54,6 +64,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    comments: [],
     username: "jojo_3",
     createdAt: formatDate(),
     updatedAt: formatDate(),
