@@ -127,11 +127,12 @@ const PostDetail = () => {
               </span>
 
               <button
+                disabled={!commentData.content.trim()}
                 onClick={() => {
                   dispatch(addComment({ postId: currentPost._id, token, commentData }));
                   setCommentData({ content: "" });
                 }}
-                className="bg-primary-color-100 hover:bg-primary-color-200 active:bg-primary-color-100 text-secondary-color-100 w-1/4 p-2 rounded-[30rem]"
+                className="bg-primary-color-100 hover:bg-primary-color-200 active:bg-primary-color-100 text-secondary-color-100 w-1/4 p-2 rounded-[30rem] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-primary-color-100"
               >
                 Reply
               </button>
