@@ -87,12 +87,13 @@ const UserPost = ({ post }) => {
               {`${currentUser?.firstName} ${currentUser?.lastName}`}
             </span>
             <span className="text-secondary-color-200 text-base">@{post?.username}</span>
-            <span>.</span>
-            <span className="text-secondary-color-200">{getPostTime(post?.createdAt)}</span>
           </div>
 
           <div>
             <p className="px-2 mt-2 break-all">{post?.content}</p>
+            <span className="text-secondary-color-dm-200 px-2 mt-2 inline-block">
+              {getPostTime(post?.createdAt)}
+            </span>
           </div>
         </div>
 

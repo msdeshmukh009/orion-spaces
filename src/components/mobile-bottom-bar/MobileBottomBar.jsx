@@ -20,9 +20,6 @@ const MobileBottomBar = () => {
         <NavLink to="/explore">
           {({ isActive }) => (isActive ? <MdExplore /> : <MdOutlineExplore />)}
         </NavLink>
-        <NavLink to="/notifications">
-          {({ isActive }) => (isActive ? <MdNotifications /> : <MdNotificationsNone />)}
-        </NavLink>
         <NavLink to="/bookmark">
           {({ isActive }) => (isActive ? <MdOutlineBookmark /> : <MdOutlineBookmarkBorder />)}
         </NavLink>

@@ -78,25 +78,6 @@ const Sidebar = () => {
           }
         </NavLink>
 
-        <NavLink to="/notifications" className={NAV_LINK_STYLES}>
-          {({ isActive }) =>
-            isActive ? (
-              <>
-                <div className="xl:mr-2 text-xl">
-                  <MdNotifications />
-                </div>
-                <span className="hidden xl:block font-bold">Notification</span>
-              </>
-            ) : (
-              <>
-                <div className="xl:mr-2 text-xl">
-                  <MdNotificationsNone />
-                </div>
-                <span className="hidden xl:block">Notification</span>
-              </>
-            )
-          }
-        </NavLink>
         <NavLink to="/bookmark" className={NAV_LINK_STYLES}>
           {({ isActive }) =>
             isActive ? (
