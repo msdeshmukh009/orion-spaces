@@ -1,4 +1,3 @@
-import { MdOutlineSearch } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { followUser } from "../../features/user/helpers";
 import { Link } from "react-router-dom";

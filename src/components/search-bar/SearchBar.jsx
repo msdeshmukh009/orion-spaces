@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { MdOutlineSearch } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { searchUser } from "../../features/user/userSlice";
@@ -13,28 +13,9 @@ const SearchBar = () => {
 
   const dispatch = useDispatch();
 
-  const searchResultRef = useRef(null);
-
-  useEffect(() => {
-    const checkIfClickedOutside = e => {
-      if (
-        searchResultRef &&
-        searchResultRef.current &&
-        !searchResultRef.current.contains(e.target)
-      ) {
-        console.log(e.target);
-        dispatch(searchUser(""));
-      }
-    };
-    document.addEventListener("mousedown", checkIfClickedOutside);
-    return () => {
-      document.removeEventListener("mousedown", checkIfClickedOutside);
-    };
-  }, []);
-
   useEffect(() => {
     dispatch(searchUser(""));
-  }, []);
+  }, [dispatch]);
 
   const currentUser = users.find(user => user.username === userData.username);
 
