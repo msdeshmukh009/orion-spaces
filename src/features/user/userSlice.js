@@ -8,6 +8,7 @@ const initialState = {
   users: [],
   searchTerm: "",
   foundUsers: [],
+  currentTheme: localStorage.getItem("spaces-theme") || "dark",
 };
 
 const extraReducers = {
@@ -96,10 +97,19 @@ export const userSlice = createSlice({
           user.lastName.toLowerCase().includes(payload.trim().toLowerCase())
       );
     },
+    toggleTheme: state => {
+      if (state.currentTheme === "dark") {
+        state.currentTheme = "";
+        localStorage.setItem("spaces-theme", "light");
+      } else {
+        state.currentTheme = "dark";
+        localStorage.setItem("spaces-theme", "dark");
+      }
+    },
   },
   extraReducers,
 });
 
-export const { setLoading, startUploading, searchUser } = userSlice.actions;
+export const { setLoading, startUploading, searchUser, toggleTheme } = userSlice.actions;
 
 export default userSlice.reducer;
