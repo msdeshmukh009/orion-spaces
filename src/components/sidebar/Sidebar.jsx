@@ -4,8 +4,6 @@ import {
   MdOutlineBookmarkBorder,
   MdOutlinePersonOutline,
   MdOutlineExplore,
-  MdNotificationsNone,
-  MdNotifications,
   MdOutlineBookmark,
   MdOutlineEdit,
   MdExplore,

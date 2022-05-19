@@ -3,8 +3,6 @@ import {
   MdHome,
   MdOutlineBookmarkBorder,
   MdOutlineExplore,
-  MdNotificationsNone,
-  MdNotifications,
   MdOutlineBookmark,
   MdExplore,
 } from "react-icons/md";
