@@ -36,6 +36,8 @@ const Profile = () => {
 
   const currentUser = users.find(user => user.username === username);
 
+  const authUser = users.find(user => user.username === userData?.username);
+
   const currentUsersPosts = posts.filter(post => post.username === username);
 
   const currentUserInitials = `${
@@ -57,7 +59,7 @@ const Profile = () => {
         <UpdateProfileModal
           showUpdateProfileModal={showUpdateProfileModal}
           setShowUpdateProfileModal={setShowUpdateProfileModal}
-          currentUser={currentUser}
+          currentUser={authUser}
         />
 
         {currentUser?.username === userData.username ? (
