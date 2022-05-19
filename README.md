@@ -1,7 +1,7 @@
 <div align="center">
   <img src="public/assets/logo3.svg" height="200" width="200" alt="orion spaces logo"/>
   
-# Orion Spaces
+# [Orion Spaces](https://orion-space.netlify.app/home)
   A social media for space geeks.
 </div>
 
