@@ -15,7 +15,7 @@ const MainTopBar = ({ title }) => {
   const dispatch = useDispatch();
 
   return (
-    <header className="hidden sm:block sticky z-10 top-0 border-b-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
+    <header className="hidden sm:block sticky z-10 top-0 bg-background-color dark:bg-background-color-dm border-b-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
       <div className="flex justify-between">
         <div className="hidden p-2 sm:flex gap-2 items-center  bg-background-color dark:bg-background-color-dm">
           {pathname !== "/home" && (

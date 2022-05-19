@@ -11,5 +11,4 @@ export const requiresAuth = function (request) {
   }
   return new Response(401, {}, { errors: ["The token is invalid. Unauthorized access error."] });
 };
-
-export const formatDate = () => dayjs().format("hh:mm A MMM DD,YYYY");
+export const formatDate = () => dayjs().format("YYYY-MM-DDTHH:mm:ssZ");
