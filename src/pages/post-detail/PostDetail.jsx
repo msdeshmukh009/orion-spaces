@@ -12,6 +12,7 @@ import {
   LikesModal,
 } from "../../components";
 import { useFocus } from "../../hooks";
+import { NotFound } from "../not-found-page/NotFound";
 import { getPostTime } from "../../utils";
 
 const PostDetail = () => {
@@ -42,7 +43,7 @@ const PostDetail = () => {
 
   const currentUser = users?.filter(user => user?.username === currentPost?.username)[0];
 
-  return (
+  return currentPost ? (
     <Base>
       <>
         <MainTopBar title={"Post"} />
@@ -153,6 +154,8 @@ const PostDetail = () => {
         )}
       </>
     </Base>
+  ) : (
+    <NotFound />
   );
 };
 
