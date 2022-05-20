@@ -25,7 +25,7 @@ const PostCtaBar = ({ likes, postId, commentCount, token, currentUser, post_Id }
   const isLiked = likes?.likedBy?.find(user => user.username === currentUser.username);
 
   const copyUrlTOClipboard = async () => {
-    await navigator.clipboard.writeText(`https://orion-space.netlify.app/${postId}`);
+    await navigator.clipboard.writeText(`https://orion-space.netlify.app/post/${postId}`);
     toast.success("Link copied to clipboard");
   };
 

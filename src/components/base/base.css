@@ -1,5 +1,6 @@
 .main-grid-layout {
   display: grid;
+  grid-template-areas: "main-container";
   grid-template-columns: 1fr;
 }
 
@@ -11,14 +12,15 @@
 }
 @media screen and (min-width: 640px) {
   .main-grid-layout {
+    grid-template-areas: "... main-container";
     grid-template-columns: 80px auto;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .main-grid-layout {
-    grid-template-columns: 80px auto 300px;
     grid-template-areas: "... main-container aside";
+    grid-template-columns: 80px auto 300px;
   }
 }
 

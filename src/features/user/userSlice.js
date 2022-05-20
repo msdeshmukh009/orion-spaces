@@ -6,6 +6,9 @@ const initialState = {
   uploadingPhoto: false,
   error: "",
   users: [],
+  searchTerm: "",
+  foundUsers: [],
+  currentTheme: localStorage.getItem("spaces-theme") || "dark",
 };
 
 const extraReducers = {
@@ -85,10 +88,28 @@ export const userSlice = createSlice({
     startUploading: state => {
       state.uploadingPhoto = true;
     },
+    searchUser: (state, { payload }) => {
+      state.searchTerm = payload;
+      state.foundUsers = state.users.filter(
+        user =>
+          user.username.toLowerCase().includes(payload.trim().toLowerCase()) ||
+          user.firstName.toLowerCase().includes(payload.trim().toLowerCase()) ||
+          user.lastName.toLowerCase().includes(payload.trim().toLowerCase())
+      );
+    },
+    toggleTheme: state => {
+      if (state.currentTheme === "dark") {
+        state.currentTheme = "";
+        localStorage.setItem("spaces-theme", "light");
+      } else {
+        state.currentTheme = "dark";
+        localStorage.setItem("spaces-theme", "dark");
+      }
+    },
   },
   extraReducers,
 });
 
-export const { setLoading, startUploading } = userSlice.actions;
+export const { setLoading, startUploading, searchUser, toggleTheme } = userSlice.actions;
 
 export default userSlice.reducer;

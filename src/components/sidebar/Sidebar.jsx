@@ -4,42 +4,25 @@ import {
   MdOutlineBookmarkBorder,
   MdOutlinePersonOutline,
   MdOutlineExplore,
-  MdNotificationsNone,
-  MdNotifications,
   MdOutlineBookmark,
   MdOutlineEdit,
-  MdOutlineWbSunny,
   MdExplore,
   MdPerson,
 } from "react-icons/md";
-import { BsMoon } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
-import { useTheme } from "../../hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { openPostModal } from "../../features/post/postSlice";
 
 const Sidebar = () => {
-  const { currentTheme, toggleTheme } = useTheme();
-
   const dispatch = useDispatch();
 
-  const {
-    auth: { userData },
-  } = useSelector(state => state);
+  const { userData } = useSelector(state => state.auth);
 
   const NAV_LINK_STYLES =
     "flex items-center justify-center xl:justify-start px-2 py-2 text-xl mb-3 w-fit rounded-[30rem] hover:bg-secondary-color-100 hover:dark:bg-secondary-color-dm-100";
 
   return (
     <aside className="sidebar col-span-1 hidden sm:flex flex-col gap-4 py-2 xl:p-3 w-20 xl:w-[250px] h-full fixed top-0">
-      <div className="text-center xl:text-right text-2xl">
-        <button onClick={toggleTheme}>
-          <div className="xl:mr-2 text-xl">
-            {currentTheme === "dark" ? <MdOutlineWbSunny /> : <BsMoon />}
-          </div>
-        </button>
-      </div>
-
       <header>
         <Link
           to="/home"
@@ -93,25 +76,6 @@ const Sidebar = () => {
           }
         </NavLink>
 
-        <NavLink to="/notifications" className={NAV_LINK_STYLES}>
-          {({ isActive }) =>
-            isActive ? (
-              <>
-                <div className="xl:mr-2 text-xl">
-                  <MdNotifications />
-                </div>
-                <span className="hidden xl:block font-bold">Notification</span>
-              </>
-            ) : (
-              <>
-                <div className="xl:mr-2 text-xl">
-                  <MdNotificationsNone />
-                </div>
-                <span className="hidden xl:block">Notification</span>
-              </>
-            )
-          }
-        </NavLink>
         <NavLink to="/bookmark" className={NAV_LINK_STYLES}>
           {({ isActive }) =>
             isActive ? (

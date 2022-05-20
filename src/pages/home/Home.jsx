@@ -3,10 +3,11 @@ import { GiSettingsKnobs } from "react-icons/gi";
 import { MdTrendingUp } from "react-icons/md";
 import { BsSortDown, BsSortUp } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { TextEditor, UserPost, Base, MainTopBar } from "../../components";
+import { TextEditor, UserPost, Base, MainTopBar, Loading } from "../../components";
 import { useDetectClickOutside } from "../../hooks";
 import { getAllPosts } from "../../features/post/helpers";
 import { getAllBookmarks } from "../../features/bookmark/helpers";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [showSortingOptions, setShowSortingOptions] = useState(false);
@@ -17,7 +18,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const {
-    posts: { posts },
+    posts: { posts, isLoading },
     auth: { userData, token },
     user: { users },
   } = useSelector(state => state);
@@ -106,7 +107,19 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+      {isLoading && (
+        <div className="flex justify-center p-4">
+          <Loading />
+        </div>
+      )}
+      {sortedPosts?.length === 0 && !isLoading && (
+        <div className="text-center p-2">
+          <h1 className="text-2xl">No posts in feed</h1>
+          <Link className="block mt-4 text-lg text-primary-color-100" to="/explore">
+            Explore
+          </Link>
+        </div>
+      )}
       {sortedPosts?.map(post => (
         <UserPost key={post._id} post={post} />
       ))}

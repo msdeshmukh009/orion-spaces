@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { followUser, unFollowUser } from "../../features/user/helpers";
 import { deletePost } from "../../features/post/helpers";
 import { openPostModal, setEditPostObj } from "../../features/post/postSlice";
+import { getPostTime } from "../../utils";
 
 const UserPost = ({ post }) => {
   const [showPostOptions, setShowPostOptions] = useState(false);
@@ -81,17 +82,17 @@ const UserPost = ({ post }) => {
       </div>
       <div className="flex flex-col gap-2 w-full">
         <div className="flex flex-col">
-          <div onClick={navigateToProfile} className="flex gap-1 px-2">
-            <span className="font-semibold">
+          <div onClick={navigateToProfile} className="flex gap-1 px-2 items-center">
+            <span className="font-semibold text-base">
               {`${currentUser?.firstName} ${currentUser?.lastName}`}
             </span>
-            <span className="text-secondary-color-200">@{post?.username}</span>
+            <span className="text-secondary-color-200 text-base">@{post?.username}</span>
           </div>
 
           <div>
             <p className="px-2 mt-2 break-all">{post?.content}</p>
             <span className="text-secondary-color-dm-200 px-2 mt-2 inline-block">
-              {post?.createdAt}
+              {getPostTime(post?.createdAt)}
             </span>
           </div>
         </div>

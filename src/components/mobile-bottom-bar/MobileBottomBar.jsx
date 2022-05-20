@@ -3,8 +3,6 @@ import {
   MdHome,
   MdOutlineBookmarkBorder,
   MdOutlineExplore,
-  MdNotificationsNone,
-  MdNotifications,
   MdOutlineBookmark,
   MdExplore,
 } from "react-icons/md";
@@ -19,9 +17,6 @@ const MobileBottomBar = () => {
         </NavLink>
         <NavLink to="/explore">
           {({ isActive }) => (isActive ? <MdExplore /> : <MdOutlineExplore />)}
-        </NavLink>
-        <NavLink to="/notifications">
-          {({ isActive }) => (isActive ? <MdNotifications /> : <MdNotificationsNone />)}
         </NavLink>
         <NavLink to="/bookmark">
           {({ isActive }) => (isActive ? <MdOutlineBookmark /> : <MdOutlineBookmarkBorder />)}

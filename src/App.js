@@ -3,13 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import { getUsers } from "./features/user/helpers";
 import { NavigationRoutes } from "./routes";
-import { useTheme } from "./hooks";
 
 export default function App() {
-  const { currentTheme } = useTheme();
-
   const {
     auth: { token },
+    user: { currentTheme },
   } = useSelector(state => state);
 
   const dispatch = useDispatch();

@@ -5,3 +5,4 @@ export { Profile } from "./profile/Profile";
 export { Bookmark } from "./bookmark/Bookmark";
 export { Explore } from "./explore/Explore";
 export { Notifications } from "./notifications/Notifications";
+export { NotFound } from "./not-found-page/NotFound";

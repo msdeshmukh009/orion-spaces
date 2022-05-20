@@ -80,14 +80,18 @@ const Comment = ({ comment, postId, authorUsername }) => {
             />
             <div className="flex justify-center gap-2 mt-4">
               <button
-                onClick={() => setIsEditing(false)}
+                onClick={() => {
+                  setEditCommentData(comment);
+                  setIsEditing(false);
+                }}
                 className=" hover:opacity-70 text-secondary-color-100 border-2 border-secondary-color-dm-50 dark:border-secondary-color-50 w-1/4 p-2 rounded-[30rem]"
               >
                 Discard
               </button>
               <button
+                disabled={!editCommentData.content.trim()}
                 onClick={handleEdit}
-                className="bg-primary-color-100 hover:bg-primary-color-200 active:bg-primary-color-100 text-secondary-color-100 w-1/4 p-2 rounded-[30rem]"
+                className="bg-primary-color-100 hover:bg-primary-color-200 active:bg-primary-color-100 text-secondary-color-100 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-primary-color-100 w-1/4 p-2 rounded-[30rem]"
               >
                 Update
               </button>

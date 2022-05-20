@@ -12,6 +12,8 @@ import {
   LikesModal,
 } from "../../components";
 import { useFocus } from "../../hooks";
+import { NotFound } from "../not-found-page/NotFound";
+import { getPostTime } from "../../utils";
 
 const PostDetail = () => {
   const [commentData, setCommentData] = useState({ content: "" });
@@ -41,7 +43,7 @@ const PostDetail = () => {
 
   const currentUser = users?.filter(user => user?.username === currentPost?.username)[0];
 
-  return (
+  return currentPost ? (
     <Base>
       <>
         <MainTopBar title={"Post"} />
@@ -72,7 +74,9 @@ const PostDetail = () => {
 
             <div className="p-2">
               <p className="text-2xl leading-8">{currentPost?.content}</p>
-              <span className="block text-secondary-color-200 mt-2">{currentPost?.createdAt}</span>
+              <span className="block text-secondary-color-200 mt-2">
+                {getPostTime(currentPost?.createdAt)}
+              </span>
             </div>
             <div className="flex items-center gap-4 p-2 min-h-[2rem] border-t-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
               <span className=" cursor-pointer" onClick={() => setShowLikesModal(true)}>
@@ -127,11 +131,12 @@ const PostDetail = () => {
               </span>
 
               <button
+                disabled={!commentData.content.trim()}
                 onClick={() => {
                   dispatch(addComment({ postId: currentPost._id, token, commentData }));
                   setCommentData({ content: "" });
                 }}
-                className="bg-primary-color-100 hover:bg-primary-color-200 active:bg-primary-color-100 text-secondary-color-100 w-1/4 p-2 rounded-[30rem]"
+                className="bg-primary-color-100 hover:bg-primary-color-200 active:bg-primary-color-100 text-secondary-color-100 w-1/4 p-2 rounded-[30rem] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:bg-primary-color-100"
               >
                 Reply
               </button>
@@ -149,6 +154,8 @@ const PostDetail = () => {
         )}
       </>
     </Base>
+  ) : (
+    <NotFound />
   );
 };
 

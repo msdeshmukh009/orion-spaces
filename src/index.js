@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "./context";
 import { Provider } from "react-redux";
 import store from "./app/store";
 
@@ -18,9 +17,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
+        <App />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
