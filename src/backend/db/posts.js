@@ -66,7 +66,7 @@ export const posts = [
     },
     comments: [],
     username: "jojo_3",
-    createdAt: formatDate(),
+    createdAt: "04:48 PM May 15,2022",
     updatedAt: formatDate(),
   },
   {
@@ -80,7 +80,7 @@ export const posts = [
     },
     comments: [],
     username: "dio_kills",
-    createdAt: formatDate(),
+    createdAt: "02:48 PM May 10,2022",
     updatedAt: formatDate(),
   },
   {
@@ -107,7 +107,7 @@ export const posts = [
     },
     comments: [],
     username: "jojo_3",
-    createdAt: formatDate(),
+    createdAt: "02:48 PM May 18,2021",
     updatedAt: formatDate(),
   },
 ];
