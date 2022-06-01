@@ -92,7 +92,7 @@ const TextEditor = () => {
               />
               <MdOutlineImage />
             </label>
-            <div ref={emojiPickerRef} className="relative">
+            <div ref={emojiPickerRef} className="relative flex items-center">
               <button
                 onClick={e => {
                   e.preventDefault();

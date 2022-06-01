@@ -171,7 +171,7 @@ const EditPostModal = () => {
                   />
                   <MdOutlineImage />
                 </label>
-                <div ref={emojiPickerRef} className="relative">
+                <div ref={emojiPickerRef} className="relative flex items-centers">
                   <button
                     onClick={e => {
                       e.preventDefault();
@@ -184,7 +184,7 @@ const EditPostModal = () => {
                   </button>
                   <div
                     ref={emojiPickerRef}
-                    className={`${showEmojiPicker ? "block" : "hidden"} text-[#171717]`}
+                    className={`${showEmojiPicker ? "block" : "hidden"} text-[#171717] z-10`}
                   >
                     <Picker
                       onEmojiClick={onEmojiClick}
@@ -192,7 +192,7 @@ const EditPostModal = () => {
                         position: "absolute",
                         boxShadow: "none",
                         height: "12rem",
-                        maxWidth: "18 rem",
+                        maxWidth: "18rem",
                       }}
                     />
                   </div>
