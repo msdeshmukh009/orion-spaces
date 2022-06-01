@@ -133,7 +133,7 @@ export const users = [
     following: [],
   },
   {
-    _id: "6b29cfac-f180-4435-9a8a-a1eb04e308e2",
+    _id: uuid(),
     firstName: "Dio",
     lastName: "Brando",
     username: "dio_kills",
