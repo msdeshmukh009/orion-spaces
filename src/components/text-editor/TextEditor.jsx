@@ -1,18 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineImage, MdOutlineEmojiEmotions, MdClose } from "react-icons/md";
+import Picker from "emoji-picker-react";
 import { Avatar } from "../avatar/Avatar";
 import { addPost } from "../../features/post/helpers";
 import { closePostModal } from "../../features/post/postSlice";
 import { uploadImage } from "../../utils/uploadImage";
 import toast from "react-hot-toast";
+import { useDetectClickOutside } from "../../hooks";
 
 const TextEditor = () => {
   const {
     auth: { token, userData },
     posts: { showPostModal },
   } = useSelector(state => state);
-
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [content, setContent] = useState("");
   const [postImageUrl, setPostImageUrl] = useState("");
   const contentRef = useRef(null);
@@ -38,7 +40,14 @@ const TextEditor = () => {
       contentRef.current.focus();
     }
   }, [showPostModal]);
+  const emojiPickerRef = useRef(null);
 
+  useDetectClickOutside(emojiPickerRef, setShowEmojiPicker);
+
+  const onEmojiClick = (event, emojiObject) => {
+    event.preventDefault();
+    setContent(prevState => `${prevState}${emojiObject.emoji}`);
+  };
   return (
     <div className="flex gap-2 p-2">
       <div className="hidden sm:block basis-14 shrink-0">
@@ -83,12 +92,30 @@ const TextEditor = () => {
               />
               <MdOutlineImage />
             </label>
-            <button
-              className="text-2xl hover:text-primary-color-100 cursor-pointer"
-              title="Add Emojis"
-            >
-              <MdOutlineEmojiEmotions />
-            </button>
+            <div ref={emojiPickerRef} className="relative">
+              <button
+                onClick={e => {
+                  e.preventDefault();
+                  setShowEmojiPicker(prevState => !prevState);
+                }}
+                className="text-2xl hover:text-primary-color-100 cursor-pointer"
+                title="Add Emojis"
+              >
+                <MdOutlineEmojiEmotions />
+              </button>
+              <div
+                ref={emojiPickerRef}
+                className={`${showEmojiPicker ? "block" : "hidden"} text-[#171717]`}
+              >
+                <Picker
+                  onEmojiClick={onEmojiClick}
+                  pickerStyle={{
+                    position: "absolute",
+                    boxShadow: "none",
+                  }}
+                />
+              </div>
+            </div>
           </div>
           <button
             onClick={handleSubmit}
