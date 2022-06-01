@@ -91,6 +91,13 @@ const UserPost = ({ post }) => {
 
           <div>
             <p className="px-2 mt-2 break-all">{post?.content}</p>
+            {post?.postImageUrl ? (
+              <img
+                className="w-full max-h-72 m-auto rounded-md my-4"
+                src={post?.postImageUrl}
+                alt=""
+              />
+            ) : null}
             <span className="text-secondary-color-dm-200 px-2 mt-2 inline-block">
               {getPostTime(post?.createdAt)}
             </span>

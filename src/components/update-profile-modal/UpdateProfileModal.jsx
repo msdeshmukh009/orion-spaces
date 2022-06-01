@@ -82,6 +82,7 @@ const UpdateProfileModal = ({ showUpdateProfileModal, setShowUpdateProfileModal,
                 className="hidden"
                 type="file"
                 onChange={e => setImageUrl(e.target.files[0])}
+                accept="image/*"
               />
               <MdPhotoCamera />
             </label>

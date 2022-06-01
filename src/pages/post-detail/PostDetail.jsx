@@ -74,9 +74,14 @@ const PostDetail = () => {
 
             <div className="p-2">
               <p className="text-2xl leading-8">{currentPost?.content}</p>
-              <span className="block text-secondary-color-200 mt-2">
-                {getPostTime(currentPost?.createdAt)}
-              </span>
+              {currentPost?.postImageUrl ? (
+                <img
+                  src={currentPost?.postImageUrl}
+                  className="w-full max-h-72 m-auto rounded-md my-4"
+                  alt=""
+                />
+              ) : null}
+              <span className="block text-secondary-color-200 mt-2">{currentPost?.createdAt}</span>
             </div>
             <div className="flex items-center gap-4 p-2 min-h-[2rem] border-t-2 border-secondary-color-50 dark:border-secondary-color-dm-50">
               <span className=" cursor-pointer" onClick={() => setShowLikesModal(true)}>

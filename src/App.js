@@ -21,7 +21,6 @@ export default function App() {
       <Toaster
         position="top-center"
         toastOptions={{
-          duration: 2000,
           style: {
             background: `${currentTheme === "dark" ? "hsl(210, 34%, 13%)" : "#f7f9f9"}`,
             color: `${currentTheme === "dark" ? "#f7f9f9" : "hsl(207, 7%, 31%)"}`,

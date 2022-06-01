@@ -42,7 +42,7 @@ const Login = () => {
     }
   };
 
-  const testUser = { username: "adarshbalika", password: "adarshBalika123" };
+  const testUser = { username: "jojo_2", password: "Jojo@999" };
 
   const loginWithTestCredentials = e => {
     e.preventDefault();
