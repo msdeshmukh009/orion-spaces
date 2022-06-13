@@ -128,6 +128,12 @@ const PostDetail = () => {
                 <input
                   ref={commentRef}
                   value={commentData.content}
+                  onKeyDown={e => {
+                    if (e.key === "Enter") {
+                      dispatch(addComment({ postId: currentPost._id, token, commentData }));
+                      setCommentData({ content: "" });
+                    }
+                  }}
                   onChange={e =>
                     setCommentData(prevState => ({ ...prevState, content: e.target.value }))
                   }
