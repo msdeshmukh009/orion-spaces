@@ -74,6 +74,13 @@ const PostDetail = () => {
 
             <div className="p-2">
               <p className="text-2xl leading-8">{currentPost?.content}</p>
+              {currentPost?.postImageUrl ? (
+                <img
+                  src={currentPost?.postImageUrl}
+                  className="w-full max-h-72 m-auto rounded-md my-4"
+                  alt=""
+                />
+              ) : null}
               <span className="block text-secondary-color-200 mt-2">
                 {getPostTime(currentPost?.createdAt)}
               </span>
@@ -121,6 +128,12 @@ const PostDetail = () => {
                 <input
                   ref={commentRef}
                   value={commentData.content}
+                  onKeyDown={e => {
+                    if (e.key === "Enter") {
+                      dispatch(addComment({ postId: currentPost._id, token, commentData }));
+                      setCommentData({ content: "" });
+                    }
+                  }}
                   onChange={e =>
                     setCommentData(prevState => ({ ...prevState, content: e.target.value }))
                   }

@@ -4,8 +4,7 @@ import toast from "react-hot-toast";
 
 const editPost = createAsyncThunk(
   "post/editPost",
-  async ({ postData, token, post }, { rejectWithValue }) => {
-    console.log(postData, token, post);
+  async ({ postData, token, post, toastId }, { rejectWithValue }) => {
     try {
       const { status, data } = await axios.post(
         `/api/posts/edit/${post._id}`,
@@ -16,7 +15,7 @@ const editPost = createAsyncThunk(
       );
 
       if (status === 201) {
-        toast.success("Post updated");
+        toast.success("Post updated", { id: toastId });
         return data.posts;
       }
     } catch (err) {

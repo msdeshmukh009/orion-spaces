@@ -120,9 +120,7 @@ const Home = () => {
           </Link>
         </div>
       )}
-      {sortedPosts?.map(post => (
-        <UserPost key={post._id} post={post} />
-      ))}
+      {!isLoading && sortedPosts?.map(post => <UserPost key={post._id} post={post} />)}
     </Base>
   );
 };

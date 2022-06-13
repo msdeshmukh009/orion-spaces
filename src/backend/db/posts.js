@@ -25,8 +25,33 @@ export const posts = [
     content:
       "You don’t always need a plan. Sometimes you just need to breathe, trust, let go and see what happens. ",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 3,
+      likedBy: [
+        {
+          _id: "38fb22a8-e7ff-437c-9cad-dc64a43984d5",
+          firstName: "Adarsh",
+          lastName: "Balika",
+          username: "adarshbalika",
+          profileUrl:
+            "https://avatars.dicebear.com/api/avataaars/dqwzfgvbzsaaxvbbaqcustom-seed.svg",
+        },
+        {
+          _id: "3be73b88-5d09-4b44-babc-f9d8b768adf6",
+          firstName: "Jonathan",
+          lastName: "Joestar",
+          username: "jojo_1",
+          profileUrl:
+            "https://res.cloudinary.com/dxebdqoxr/image/upload/v1652610493/orion-spaces/jonathan_catdha.jpg",
+        },
+        {
+          _id: "070db363-dfbf-48c6-82f1-146071f08d4f",
+          firstName: "Joseph ",
+          lastName: "Joestar",
+          username: "jojo_2",
+          profileUrl:
+            "https://res.cloudinary.com/dxebdqoxr/image/upload/v1652987212/orion-spaces/jojo_2_dwhb1p.jpg",
+        },
+      ],
       dislikedBy: [],
     },
     comments: [],
@@ -108,6 +133,21 @@ export const posts = [
     comments: [],
     username: "jojo_3",
     createdAt: "02:48 PM May 18,2021",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    content: "In Search of new world 🚀",
+    postImageUrl:
+      "https://res.cloudinary.com/dxebdqoxr/image/upload/v1654092107/orion-spaces/zurn7uksaqphjclg6eqc.jpg",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    username: "jojo_3",
+    createdAt: "02:48 PM May 30,2022",
     updatedAt: formatDate(),
   },
 ];
